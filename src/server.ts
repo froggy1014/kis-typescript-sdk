@@ -2,8 +2,9 @@ import cors from "cors";
 import express, { type Express } from "express";
 import helmet from "helmet";
 import { pino } from "pino";
-import { healthCheckRouter } from "@/api/healthCheck/healthCheckRouter";
-import { userRouter } from "@/api/user/userRouter";
+import { oauthRouter } from "@/api/oauth/oauthRouter";
+import { domesticQuotationsRouter } from "@/api/domestic-stock/quotationsRouter";
+import { domesticTradingRouter } from "@/api/domestic-stock/tradingRouter";
 import { openAPIRouter } from "@/api-docs/openAPIRouter";
 import errorHandler from "@/common/middleware/errorHandler";
 import rateLimiter from "@/common/middleware/rateLimiter";
@@ -26,9 +27,10 @@ app.use(rateLimiter);
 // Request logging
 app.use(requestLogger);
 
-// Routes
-app.use("/health-check", healthCheckRouter);
-app.use("/users", userRouter);
+// Korea Investment Securities API Routes
+app.use("/", oauthRouter); // OAuth 인증
+app.use("/", domesticQuotationsRouter); // 국내주식 기본시세
+app.use("/", domesticTradingRouter); // 국내주식 주문/계좌
 
 // Swagger UI
 app.use(openAPIRouter);
