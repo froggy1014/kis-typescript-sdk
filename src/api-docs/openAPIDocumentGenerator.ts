@@ -3,11 +3,17 @@ import { OpenAPIRegistry, OpenApiGeneratorV3 } from "@asteasolutions/zod-to-open
 import { oauthRegistry } from "@/api/oauth/oauthRouter";
 import { domesticQuotationsRegistry } from "@/api/domestic-stock/quotationsRouter";
 import { domesticTradingRegistry } from "@/api/domestic-stock/tradingRouter";
+import { domesticElwRegistry } from "@/api/domestic-stock/elwRouter";
+import { domesticSectorRegistry } from "@/api/domestic-stock/sectorRouter";
+import { domesticStockInfoRegistry } from "@/api/domestic-stock/stockInfoRouter";
+import { marketAnalysisRegistry } from "@/api/domestic-stock/marketAnalysisRouter";
+import { websocketRegistry } from "@/api/websocket/websocketRouter";
+import { futuresOptionsRegistry } from "@/api/futures-options/futuresOptionsRouter";
 
 export type OpenAPIDocument = ReturnType<OpenApiGeneratorV3["generateDocument"]>;
 
 export function generateOpenAPIDocument(): OpenAPIDocument {
-	const registry = new OpenAPIRegistry([oauthRegistry, domesticQuotationsRegistry, domesticTradingRegistry]);
+	const registry = new OpenAPIRegistry([oauthRegistry, domesticQuotationsRegistry, domesticTradingRegistry, domesticElwRegistry, domesticSectorRegistry, domesticStockInfoRegistry, marketAnalysisRegistry, websocketRegistry, futuresOptionsRegistry]);
 	
 	// Register Bearer authentication security scheme
 	registry.registerComponent("securitySchemes", "bearerAuth", {
