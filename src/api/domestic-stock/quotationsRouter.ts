@@ -744,3 +744,520 @@ domesticQuotationsRegistry.registerPath({
 		"시간외 현재가 조회 성공",
 	),
 });
+
+// Define ETF component stock response schema
+const ETFComponentStockResponseSchema = z.object({
+	rt_cd: z.string().describe("성공 실패 여부"),
+	msg_cd: z.string().describe("응답코드"),
+	msg1: z.string().describe("응답메세지"),
+	output1: z
+		.object({
+			etf_mdd_date: z.string().describe("ETF 구성일자"),
+			etf_prpr: z.string().describe("ETF 현재가"),
+			prdy_vrss: z.string().describe("전일 대비"),
+			prdy_vrss_sign: z.string().describe("전일 대비 부호"),
+			prdy_ctrt: z.string().describe("전일 대비율"),
+			etf_cnfg_issu_avls: z.string().describe("ETF 구성종목 시총"),
+		})
+		.describe("ETF 요약 정보"),
+	output2: z
+		.array(
+			z.object({
+				stck_shrn_iscd: z.string().describe("주식 단축 종목코드"),
+				hts_kor_isnm: z.string().describe("HTS 한국어 종목명"),
+				stck_prpr: z.string().describe("주식 현재가"),
+				prdy_vrss: z.string().describe("전일 대비"),
+				prdy_vrss_sign: z.string().describe("전일 대비 부호"),
+				prdy_ctrt: z.string().describe("전일 대비율"),
+				acml_vol: z.string().describe("누적 거래량"),
+				etf_cnfg_wght: z.string().describe("ETF 구성비중"),
+				etf_cnfg_qty: z.string().describe("ETF 구성수량"),
+				etf_cnfg_avls: z.string().describe("ETF 구성시총"),
+			}),
+		)
+		.describe("ETF 구성종목 목록"),
+});
+
+// Define NAV comparison trend response schema
+const NAVComparisonTrendResponseSchema = z.object({
+	rt_cd: z.string().describe("성공 실패 여부"),
+	msg_cd: z.string().describe("응답코드"),
+	msg1: z.string().describe("응답메세지"),
+	output: z
+		.array(
+			z.object({
+				stck_shrn_iscd: z.string().describe("주식 단축 종목코드"),
+				hts_kor_isnm: z.string().describe("HTS 한국어 종목명"),
+				etf_nav: z.string().describe("ETF NAV"),
+				etf_prpr: z.string().describe("ETF 현재가"),
+				prdy_vrss: z.string().describe("전일 대비"),
+				prdy_vrss_sign: z.string().describe("전일 대비 부호"),
+				prdy_ctrt: z.string().describe("전일 대비율"),
+				nav_prpr_vrss: z.string().describe("NAV 현재가 대비"),
+				nav_prpr_vrss_sign: z.string().describe("NAV 현재가 대비 부호"),
+				nav_prpr_rate: z.string().describe("NAV 현재가 대비율"),
+			}),
+		)
+		.describe("NAV 비교추이 목록"),
+});
+
+// Define overtime daily price response schema
+const OvertimeDailyPriceResponseSchema = z.object({
+	rt_cd: z.string().describe("성공 실패 여부"),
+	msg_cd: z.string().describe("응답코드"),
+	msg1: z.string().describe("응답메세지"),
+	output1: z
+		.object({
+			ovtm_untp_prpr: z.string().describe("시간외 단일가 현재가"),
+			ovtm_untp_prdy_vrss: z.string().describe("시간외 단일가 전일 대비"),
+			ovtm_untp_prdy_vrss_sign: z.string().describe("시간외 단일가 전일 대비 부호"),
+			ovtm_untp_prdy_ctrt: z.string().describe("시간외 단일가 전일 대비율"),
+			ovtm_untp_vol: z.string().describe("시간외 단일가 거래량"),
+		})
+		.describe("시간외 단일가 정보"),
+	output2: z
+		.array(
+			z.object({
+				stck_bsop_date: z.string().describe("주식 영업 일자"),
+				ovtm_untp_prpr: z.string().describe("시간외 단일가 현재가"),
+				prdy_vrss: z.string().describe("전일 대비"),
+				prdy_vrss_sign: z.string().describe("전일 대비 부호"),
+				prdy_ctrt: z.string().describe("전일 대비율"),
+				ovtm_untp_vol: z.string().describe("시간외 단일가 거래량"),
+				ovtm_untp_tr_pbmn: z.string().describe("시간외 단일가 거래대금"),
+			}),
+		)
+		.describe("시간외 일자별 주가 목록"),
+});
+
+// Define overtime asking price response schema
+const OvertimeAskingPriceResponseSchema = z.object({
+	rt_cd: z.string().describe("성공 실패 여부"),
+	msg_cd: z.string().describe("응답코드"),
+	msg1: z.string().describe("응답메세지"),
+	output: z
+		.object({
+			ovtm_askp1: z.string().describe("시간외 매도호가 1"),
+			ovtm_askp2: z.string().describe("시간외 매도호가 2"),
+			ovtm_askp3: z.string().describe("시간외 매도호가 3"),
+			ovtm_askp4: z.string().describe("시간외 매도호가 4"),
+			ovtm_askp5: z.string().describe("시간외 매도호가 5"),
+			ovtm_bidp1: z.string().describe("시간외 매수호가 1"),
+			ovtm_bidp2: z.string().describe("시간외 매수호가 2"),
+			ovtm_bidp3: z.string().describe("시간외 매수호가 3"),
+			ovtm_bidp4: z.string().describe("시간외 매수호가 4"),
+			ovtm_bidp5: z.string().describe("시간외 매수호가 5"),
+			ovtm_askp_rsqn1: z.string().describe("시간외 매도호가 잔량 1"),
+			ovtm_askp_rsqn2: z.string().describe("시간외 매도호가 잔량 2"),
+			ovtm_askp_rsqn3: z.string().describe("시간외 매도호가 잔량 3"),
+			ovtm_askp_rsqn4: z.string().describe("시간외 매도호가 잔량 4"),
+			ovtm_askp_rsqn5: z.string().describe("시간외 매도호가 잔량 5"),
+			ovtm_bidp_rsqn1: z.string().describe("시간외 매수호가 잔량 1"),
+			ovtm_bidp_rsqn2: z.string().describe("시간외 매수호가 잔량 2"),
+			ovtm_bidp_rsqn3: z.string().describe("시간외 매수호가 잔량 3"),
+			ovtm_bidp_rsqn4: z.string().describe("시간외 매수호가 잔량 4"),
+			ovtm_bidp_rsqn5: z.string().describe("시간외 매수호가 잔량 5"),
+			ovtm_antc_cnpr: z.string().describe("시간외 예상 체결가"),
+			ovtm_antc_vol: z.string().describe("시간외 예상 거래량"),
+		})
+		.describe("시간외 호가 정보"),
+});
+
+// Define daily chart response schema
+const DailyChartResponseSchema = z.object({
+	rt_cd: z.string().describe("성공 실패 여부"),
+	msg_cd: z.string().describe("응답코드"),
+	msg1: z.string().describe("응답메세지"),
+	output1: z
+		.object({
+			prdy_vrss: z.string().describe("전일 대비"),
+			prdy_vrss_sign: z.string().describe("전일 대비 부호"),
+			prdy_ctrt: z.string().describe("전일 대비율"),
+			stck_prdy_clpr: z.string().describe("주식 전일 종가"),
+			acml_vol: z.string().describe("누적 거래량"),
+			acml_tr_pbmn: z.string().describe("누적 거래 대금"),
+			hts_kor_isnm: z.string().describe("HTS 한국어 종목명"),
+			stck_prpr: z.string().describe("주식 현재가"),
+			stck_shrn_iscd: z.string().describe("주식 단축 종목코드"),
+		})
+		.describe("일별 분봉 요약"),
+	output2: z
+		.array(
+			z.object({
+				stck_bsop_date: z.string().describe("주식 영업 일자"),
+				stck_cntg_hour: z.string().describe("주식 체결 시간"),
+				stck_prpr: z.string().describe("주식 현재가"),
+				stck_oprc: z.string().describe("주식 시가"),
+				stck_hgpr: z.string().describe("주식 고가"),
+				stck_lwpr: z.string().describe("주식 저가"),
+				cntg_vol: z.string().describe("체결 거래량"),
+				acml_tr_pbmn: z.string().describe("누적 거래 대금"),
+			}),
+		)
+		.describe("일별 분봉 목록"),
+});
+
+// Define NAV comparison daily trend response schema
+const NAVComparisonDailyTrendResponseSchema = z.object({
+	rt_cd: z.string().describe("성공 실패 여부"),
+	msg_cd: z.string().describe("응답코드"),
+	msg1: z.string().describe("응답메세지"),
+	output: z
+		.array(
+			z.object({
+				stck_bsop_date: z.string().describe("주식 영업 일자"),
+				etf_nav: z.string().describe("ETF NAV"),
+				etf_prpr: z.string().describe("ETF 현재가"),
+				prdy_vrss: z.string().describe("전일 대비"),
+				prdy_vrss_sign: z.string().describe("전일 대비 부호"),
+				prdy_ctrt: z.string().describe("전일 대비율"),
+				nav_prpr_vrss: z.string().describe("NAV 현재가 대비"),
+				nav_prpr_vrss_sign: z.string().describe("NAV 현재가 대비 부호"),
+				nav_prpr_rate: z.string().describe("NAV 현재가 대비율"),
+			}),
+		)
+		.describe("NAV 비교추이 일별 목록"),
+});
+
+// Define NAV comparison time trend response schema
+const NAVComparisonTimeTrendResponseSchema = z.object({
+	rt_cd: z.string().describe("성공 실패 여부"),
+	msg_cd: z.string().describe("응답코드"),
+	msg1: z.string().describe("응답메세지"),
+	output: z
+		.array(
+			z.object({
+				stck_cntg_hour: z.string().describe("주식 체결 시간"),
+				etf_nav: z.string().describe("ETF NAV"),
+				etf_prpr: z.string().describe("ETF 현재가"),
+				prdy_vrss: z.string().describe("전일 대비"),
+				prdy_vrss_sign: z.string().describe("전일 대비 부호"),
+				prdy_ctrt: z.string().describe("전일 대비율"),
+				nav_prpr_vrss: z.string().describe("NAV 현재가 대비"),
+				nav_prpr_vrss_sign: z.string().describe("NAV 현재가 대비 부호"),
+				nav_prpr_rate: z.string().describe("NAV 현재가 대비율"),
+			}),
+		)
+		.describe("NAV 비교추이 분별 목록"),
+});
+
+// Define ETF/ETN current price response schema
+const ETFETNCurrentPriceResponseSchema = z.object({
+	rt_cd: z.string().describe("성공 실패 여부"),
+	msg_cd: z.string().describe("응답코드"),
+	msg1: z.string().describe("응답메세지"),
+	output: z
+		.object({
+			stck_shrn_iscd: z.string().describe("주식 단축 종목코드"),
+			stck_prpr: z.string().describe("주식 현재가"),
+			prdy_vrss: z.string().describe("전일 대비"),
+			prdy_vrss_sign: z.string().describe("전일 대비 부호"),
+			prdy_ctrt: z.string().describe("전일 대비율"),
+			acml_vol: z.string().describe("누적 거래량"),
+			acml_tr_pbmn: z.string().describe("누적 거래 대금"),
+			hts_kor_isnm: z.string().describe("HTS 한국어 종목명"),
+			stck_oprc: z.string().describe("주식 시가"),
+			stck_hgpr: z.string().describe("주식 고가"),
+			stck_lwpr: z.string().describe("주식 저가"),
+			stck_mxpr: z.string().describe("주식 상한가"),
+			stck_llam: z.string().describe("주식 하한가"),
+			stck_prdy_clpr: z.string().describe("주식 전일 종가"),
+			etf_nav: z.string().describe("ETF NAV"),
+			etf_nav_prdy_vrss: z.string().describe("ETF NAV 전일 대비"),
+			etf_nav_prdy_vrss_sign: z.string().describe("ETF NAV 전일 대비 부호"),
+			etf_nav_prdy_ctrt: z.string().describe("ETF NAV 전일 대비율"),
+			nav_prpr_vrss: z.string().describe("NAV 현재가 대비"),
+			nav_prpr_vrss_sign: z.string().describe("NAV 현재가 대비 부호"),
+			nav_prpr_rate: z.string().describe("NAV 현재가 대비율"),
+		})
+		.describe("ETF/ETN 현재가 정보"),
+});
+
+// Define expected closing price response schema
+const ExpectedClosingPriceResponseSchema = z.object({
+	rt_cd: z.string().describe("성공 실패 여부"),
+	msg_cd: z.string().describe("응답코드"),
+	msg1: z.string().describe("응답메세지"),
+	output: z
+		.array(
+			z.object({
+				stck_shrn_iscd: z.string().describe("주식 단축 종목코드"),
+				hts_kor_isnm: z.string().describe("HTS 한국어 종목명"),
+				stck_prpr: z.string().describe("주식 현재가"),
+				prdy_vrss: z.string().describe("전일 대비"),
+				prdy_vrss_sign: z.string().describe("전일 대비 부호"),
+				prdy_ctrt: z.string().describe("전일 대비율"),
+				exp_clpr: z.string().describe("예상 종가"),
+				exp_clpr_vrss: z.string().describe("예상 종가 대비"),
+				exp_clpr_vrss_sign: z.string().describe("예상 종가 대비 부호"),
+				exp_clpr_ctrt: z.string().describe("예상 종가 대비율"),
+			}),
+		)
+		.describe("예상 체결가 목록"),
+});
+
+// ETF 구성종목시세
+domesticQuotationsRegistry.registerPath({
+	method: "get",
+	path: "/uapi/etfetn/v1/quotations/inquire-component-stock-price",
+	tags: ["국내주식 기본시세"],
+	summary: "ETF 구성종목시세",
+	description: "ETF의 구성종목 시세 정보를 조회합니다 (TR_ID: FHKST121600C0)",
+	security: [{ bearerAuth: [] }],
+	request: {
+		query: z.object({
+			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
+			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
+			FID_COND_SCR_DIV_CODE: z.string().default("11216").describe("조건화면분류코드"),
+		}),
+		headers: z.object({
+			appkey: z.string().describe("앱키"),
+			appsecret: z.string().describe("앱시크릿"),
+			tr_id: z.string().default("FHKST121600C0").describe("거래ID"),
+			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
+		}),
+	},
+	responses: createDirectApiResponse(
+		domesticQuotationsRegistry,
+		"ETFComponentStockResponse",
+		ETFComponentStockResponseSchema,
+		"ETF 구성종목시세 조회 성공",
+	),
+});
+
+// NAV 비교추이(종목)
+domesticQuotationsRegistry.registerPath({
+	method: "get",
+	path: "/uapi/etfetn/v1/quotations/nav-comparison-trend",
+	tags: ["국내주식 기본시세"],
+	summary: "NAV 비교추이(종목)",
+	description: "ETF/ETN의 NAV 비교추이를 종목별로 조회합니다 (TR_ID: FHPST02440000)",
+	security: [{ bearerAuth: [] }],
+	request: {
+		query: z.object({
+			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
+			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
+			FID_INPUT_DATE_1: z.string().describe("시작일자 (YYYYMMDD)"),
+			FID_INPUT_DATE_2: z.string().describe("종료일자 (YYYYMMDD)"),
+		}),
+		headers: z.object({
+			appkey: z.string().describe("앱키"),
+			appsecret: z.string().describe("앱시크릿"),
+			tr_id: z.string().default("FHPST02440000").describe("거래ID"),
+			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
+		}),
+	},
+	responses: createDirectApiResponse(
+		domesticQuotationsRegistry,
+		"NAVComparisonTrendResponse",
+		NAVComparisonTrendResponseSchema,
+		"NAV 비교추이(종목) 조회 성공",
+	),
+});
+
+// 주식현재가 시간외일자별주가
+domesticQuotationsRegistry.registerPath({
+	method: "get",
+	path: "/uapi/domestic-stock/v1/quotations/inquire-daily-overtimeprice",
+	tags: ["국내주식 기본시세"],
+	summary: "주식현재가 시간외일자별주가",
+	description: "주식의 시간외 일자별 주가 정보를 조회합니다 (TR_ID: FHPST02320000)",
+	security: [{ bearerAuth: [] }],
+	request: {
+		query: z.object({
+			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
+			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
+		}),
+		headers: z.object({
+			appkey: z.string().describe("앱키"),
+			appsecret: z.string().describe("앱시크릿"),
+			tr_id: z.string().default("FHPST02320000").describe("거래ID"),
+			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
+		}),
+	},
+	responses: createDirectApiResponse(
+		domesticQuotationsRegistry,
+		"OvertimeDailyPriceResponse",
+		OvertimeDailyPriceResponseSchema,
+		"시간외 일자별주가 조회 성공",
+	),
+});
+
+// 국내주식 시간외호가
+domesticQuotationsRegistry.registerPath({
+	method: "get",
+	path: "/uapi/domestic-stock/v1/quotations/inquire-overtime-asking-price",
+	tags: ["국내주식 기본시세"],
+	summary: "국내주식 시간외호가",
+	description: "주식의 시간외 호가 정보를 조회합니다 (TR_ID: FHPST02300400)",
+	security: [{ bearerAuth: [] }],
+	request: {
+		query: z.object({
+			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
+			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
+		}),
+		headers: z.object({
+			appkey: z.string().describe("앱키"),
+			appsecret: z.string().describe("앱시크릿"),
+			tr_id: z.string().default("FHPST02300400").describe("거래ID"),
+			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
+		}),
+	},
+	responses: createDirectApiResponse(
+		domesticQuotationsRegistry,
+		"OvertimeAskingPriceResponse",
+		OvertimeAskingPriceResponseSchema,
+		"시간외호가 조회 성공",
+	),
+});
+
+// 주식일별분봉조회
+domesticQuotationsRegistry.registerPath({
+	method: "get",
+	path: "/uapi/domestic-stock/v1/quotations/inquire-time-dailychartprice",
+	tags: ["국내주식 기본시세"],
+	summary: "주식일별분봉조회",
+	description: "주식의 일별 분봉 차트 데이터를 조회합니다 (TR_ID: FHKST03010230)",
+	security: [{ bearerAuth: [] }],
+	request: {
+		query: z.object({
+			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
+			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
+			FID_INPUT_DATE_1: z.string().describe("시작일자 (YYYYMMDD)"),
+			FID_PERIOD_DIV_CODE: z.enum(["1", "5", "10", "15", "30", "60"]).describe("분 간격 (1,5,10,15,30,60)"),
+			FID_ORG_ADJ_PRC: z.enum(["0", "1"]).default("0").describe("수정주가 여부 (0:수정안함, 1:수정함)"),
+		}),
+		headers: z.object({
+			appkey: z.string().describe("앱키"),
+			appsecret: z.string().describe("앱시크릿"),
+			tr_id: z.string().default("FHKST03010230").describe("거래ID"),
+			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
+		}),
+	},
+	responses: createDirectApiResponse(
+		domesticQuotationsRegistry,
+		"DailyChartResponse",
+		DailyChartResponseSchema,
+		"일별 분봉 조회 성공",
+	),
+});
+
+// NAV 비교추이(일)
+domesticQuotationsRegistry.registerPath({
+	method: "get",
+	path: "/uapi/etfetn/v1/quotations/nav-comparison-daily-trend",
+	tags: ["국내주식 기본시세"],
+	summary: "NAV 비교추이(일)",
+	description: "ETF/ETN의 NAV 비교추이를 일별로 조회합니다 (TR_ID: FHPST02440200)",
+	security: [{ bearerAuth: [] }],
+	request: {
+		query: z.object({
+			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
+			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
+			FID_INPUT_DATE_1: z.string().describe("시작일자 (YYYYMMDD)"),
+			FID_INPUT_DATE_2: z.string().describe("종료일자 (YYYYMMDD)"),
+		}),
+		headers: z.object({
+			appkey: z.string().describe("앱키"),
+			appsecret: z.string().describe("앱시크릿"),
+			tr_id: z.string().default("FHPST02440200").describe("거래ID"),
+			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
+		}),
+	},
+	responses: createDirectApiResponse(
+		domesticQuotationsRegistry,
+		"NAVComparisonDailyTrendResponse",
+		NAVComparisonDailyTrendResponseSchema,
+		"NAV 비교추이(일) 조회 성공",
+	),
+});
+
+// NAV 비교추이(분)
+domesticQuotationsRegistry.registerPath({
+	method: "get",
+	path: "/uapi/etfetn/v1/quotations/nav-comparison-time-trend",
+	tags: ["국내주식 기본시세"],
+	summary: "NAV 비교추이(분)",
+	description: "ETF/ETN의 NAV 비교추이를 분별로 조회합니다 (TR_ID: FHPST02440100)",
+	security: [{ bearerAuth: [] }],
+	request: {
+		query: z.object({
+			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
+			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
+			FID_INPUT_DATE_1: z.string().describe("조회일자 (YYYYMMDD)"),
+			FID_INPUT_HOUR_1: z.string().describe("시작시간 (HHMMSS)"),
+			FID_INPUT_HOUR_2: z.string().describe("종료시간 (HHMMSS)"),
+		}),
+		headers: z.object({
+			appkey: z.string().describe("앱키"),
+			appsecret: z.string().describe("앱시크릿"),
+			tr_id: z.string().default("FHPST02440100").describe("거래ID"),
+			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
+		}),
+	},
+	responses: createDirectApiResponse(
+		domesticQuotationsRegistry,
+		"NAVComparisonTimeTrendResponse",
+		NAVComparisonTimeTrendResponseSchema,
+		"NAV 비교추이(분) 조회 성공",
+	),
+});
+
+// ETF/ETN 현재가
+domesticQuotationsRegistry.registerPath({
+	method: "get",
+	path: "/uapi/etfetn/v1/quotations/inquire-price",
+	tags: ["국내주식 기본시세"],
+	summary: "ETF/ETN 현재가",
+	description: "ETF/ETN의 현재가 정보를 조회합니다 (TR_ID: FHPST02400000)",
+	security: [{ bearerAuth: [] }],
+	request: {
+		query: z.object({
+			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
+			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
+		}),
+		headers: z.object({
+			appkey: z.string().describe("앱키"),
+			appsecret: z.string().describe("앱시크릿"),
+			tr_id: z.string().default("FHPST02400000").describe("거래ID"),
+			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
+		}),
+	},
+	responses: createDirectApiResponse(
+		domesticQuotationsRegistry,
+		"ETFETNCurrentPriceResponse",
+		ETFETNCurrentPriceResponseSchema,
+		"ETF/ETN 현재가 조회 성공",
+	),
+});
+
+// 국내주식 장마감 예상체결가
+domesticQuotationsRegistry.registerPath({
+	method: "get",
+	path: "/uapi/domestic-stock/v1/quotations/exp-closing-price",
+	tags: ["국내주식 기본시세"],
+	summary: "국내주식 장마감 예상체결가",
+	description: "국내주식의 장마감 예상체결가를 조회합니다 (TR_ID: FHKST117300C0)",
+	security: [{ bearerAuth: [] }],
+	request: {
+		query: z.object({
+			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
+			FID_COND_SCR_DIV_CODE: z.string().default("20171").describe("조건화면분류코드"),
+			FID_INPUT_ISCD: z.string().optional().describe("종목코드 (전체조회시 생략)"),
+			FID_DIV_CLS_CODE: z.enum(["0", "1"]).default("0").describe("분류구분코드 (0:전체, 1:특정종목)"),
+			FID_RANK_SORT_CLS_CODE: z.enum(["0", "1"]).default("0").describe("순위정렬구분코드 (0:상승률순, 1:하락률순)"),
+		}),
+		headers: z.object({
+			appkey: z.string().describe("앱키"),
+			appsecret: z.string().describe("앱시크릿"),
+			tr_id: z.string().default("FHKST117300C0").describe("거래ID"),
+			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
+		}),
+	},
+	responses: createDirectApiResponse(
+		domesticQuotationsRegistry,
+		"ExpectedClosingPriceResponse",
+		ExpectedClosingPriceResponseSchema,
+		"예상체결가 조회 성공",
+	),
+});
