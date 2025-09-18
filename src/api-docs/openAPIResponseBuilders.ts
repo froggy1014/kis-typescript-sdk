@@ -1,3 +1,4 @@
+import type { OpenAPIRegistry } from "@asteasolutions/zod-to-openapi";
 import { StatusCodes } from "http-status-codes";
 import type { z } from "zod";
 
@@ -10,6 +11,28 @@ export function createApiResponse(schema: z.ZodTypeAny, description: string, sta
 			content: {
 				"application/json": {
 					schema: ServiceResponseSchema(schema),
+				},
+			},
+		},
+	};
+}
+
+export function createDirectApiResponse(
+	registry: OpenAPIRegistry,
+	schemaName: string,
+	responseSchema: z.ZodTypeAny,
+	description: string,
+	statusCode = StatusCodes.OK,
+) {
+	// Register the direct response schema without ServiceResponse wrapper
+	const namedSchema = registry.register(schemaName, responseSchema);
+
+	return {
+		[statusCode]: {
+			description,
+			content: {
+				"application/json": {
+					schema: namedSchema,
 				},
 			},
 		},
