@@ -3,7 +3,7 @@ import { defineConfig } from "tsdown";
 export default defineConfig([
 	{
 		entry: "package/index.ts",
-		outDir: "dist",
+		outDir: "dist/package",
 		format: ["esm", "cjs"],
 		dts: true,
 		clean: true,
@@ -13,7 +13,7 @@ export default defineConfig([
 	},
 	{
 		entry: "src/index.ts",
-		outDir: "build",
+		outDir: "dist",
 		format: ["esm", "cjs"],
 		dts: true,
 		clean: true,

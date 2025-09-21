@@ -5,15 +5,15 @@
 	"author": "froggy1014",
 	"repository": "froggy1014/kis-typescript-sdk",
 	"license": "MIT",
-	"main": "./build/index.js",
+	"main": "./dist/package/index.js",
 	"private": false,
 	"files": [
-		"dist/"
+		"dist/package/"
 	],
 	"scripts": {
-		"build": "tsc && tsdown",
+		"build": "npm run generate && tsc && tsdown",
 		"start:dev": "node --import=tsx --watch src/index.ts",
-		"start:prod": "node build/index.js",
+		"start:prod": "node dist/index.js",
 		"check": "biome check --write",
 		"generate:openapi": "node --import=tsx scripts/generate-open-api.ts",
 		"generate:tr-mappings": "node --import=tsx scripts/generate-tr-id-mappings.ts",
@@ -42,12 +42,12 @@
 		"vitest": "3.2.4"
 	},
 	"packageManager": "pnpm@10.14.0",
-	"module": "./dist/index.mjs",
-	"types": "./dist/index.d.ts",
+	"module": "./dist/package/index.mjs",
+	"types": "./dist/package/index.d.ts",
 	"exports": {
 		".": {
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.js"
+			"import": "./dist/package/index.mjs",
+			"require": "./dist/package/index.js"
 		},
 		"./package.json": "./package.json"
 	}
