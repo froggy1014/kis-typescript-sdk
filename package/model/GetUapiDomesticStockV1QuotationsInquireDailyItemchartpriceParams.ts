@@ -3,7 +3,7 @@
  * Do not edit manually.
  * Korea Investment API
  * 
-[OpenAPI json 링크](http://localhost:8080/swagger.json)
+[OpenAPI json 링크](https://comforting-meringue-518bd8.netlify.app/swagger.json)
 
 [API 문서 링크](https://api.koreainvestment.com/openapi/docs)
 

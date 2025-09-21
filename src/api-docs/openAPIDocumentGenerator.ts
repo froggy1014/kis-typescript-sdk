@@ -26,7 +26,7 @@ export function generateOpenAPIDocument(): Record<string, any> {
       title: "Korea Investment API",
       version: "1.0.0",
       description: `
-[OpenAPI json 링크](http://localhost:8080/swagger.json)\n
+[OpenAPI json 링크](https://comforting-meringue-518bd8.netlify.app/swagger.json)\n
 [API 문서 링크](https://api.koreainvestment.com/openapi/docs)
 
 ## 🔐 인증 방법
@@ -45,7 +45,7 @@ export function generateOpenAPIDocument(): Record<string, any> {
     },
     servers: [
       {
-        url: "http://localhost:8080",
+        url: "https://comforting-meringue-518bd8.netlify.app",
         description: "Development server",
       },
       {

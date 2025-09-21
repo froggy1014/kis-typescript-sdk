@@ -3,11 +3,11 @@
   "info": {
     "title": "Korea Investment API",
     "version": "1.0.0",
-    "description": "\n[OpenAPI json 링크](http://localhost:8080/swagger.json)\n\n[API 문서 링크](https://api.koreainvestment.com/openapi/docs)\n\n## 🔐 인증 방법\n1. **상단의 \"Authorize\" 버튼을 클릭**하여 API 키들을 입력하세요\n2. 필요한 헤더 정보:\n   - **appkey**: 한국투자증권에서 발급받은 앱키\n   - **appsecret**: 한국투자증권에서 발급받은 앱시크릿\n   - **tr_id**: API별 고유 거래ID (각 API 문서 참조)\n   - **custtype**: 고객타입 (P: 개인, B: 법인)\n\n## 🚀 사용 방법\n- OAuth API는 appkey, appsecret만 필요\n- 시세 조회 API는 모든 헤더 정보 필요\n- WebSocket 연결 시에는 별도 접속키 발급 필요\n\t\t\t"
+    "description": "\n[OpenAPI json 링크](https://comforting-meringue-518bd8.netlify.app/swagger.json)\n\n[API 문서 링크](https://api.koreainvestment.com/openapi/docs)\n\n## 🔐 인증 방법\n1. **상단의 \"Authorize\" 버튼을 클릭**하여 API 키들을 입력하세요\n2. 필요한 헤더 정보:\n   - **appkey**: 한국투자증권에서 발급받은 앱키\n   - **appsecret**: 한국투자증권에서 발급받은 앱시크릿\n   - **tr_id**: API별 고유 거래ID (각 API 문서 참조)\n   - **custtype**: 고객타입 (P: 개인, B: 법인)\n\n## 🚀 사용 방법\n- OAuth API는 appkey, appsecret만 필요\n- 시세 조회 API는 모든 헤더 정보 필요\n- WebSocket 연결 시에는 별도 접속키 발급 필요\n\t\t\t"
   },
   "servers": [
     {
-      "url": "http://localhost:8080",
+      "url": "https://comforting-meringue-518bd8.netlify.app",
       "description": "Development server"
     },
     {
