@@ -35,8 +35,7 @@ app.use("/swagger", openAPIRouter);
 
 // Export OpenAPI spec at /swagger.json
 app.get("/swagger.json", (_req, res) => {
-  const openAPIDocument = generateOpenAPIDocument();
-  res.json(openAPIDocument);
+  res.sendFile("openapi.json", { root: "." });
 });
 
 // Root redirect to Swagger
