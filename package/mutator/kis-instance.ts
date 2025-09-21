@@ -45,7 +45,7 @@ customInstance.interceptors.request.use(
 
 		config.headers.appkey = process.env.KIS_APP_KEY;
 		config.headers.appsecret = process.env.KIS_APP_SECRET;
-		config.headers.authentication = `Bearer ${process.env.KIS_ACCESS_TOKEN}`;
+		config.headers.Authorization = `Bearer ${process.env.KIS_ACCESS_TOKEN}`;
 		config.headers.custtype = process.env.KIS_CUST_TYPE;
 
 		// 환경 감지 (모의투자 vs 실전투자)
