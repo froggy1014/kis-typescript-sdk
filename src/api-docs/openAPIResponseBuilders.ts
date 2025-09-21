@@ -1,5 +1,5 @@
-import { OpenAPIRegistry } from "@asteasolutions/zod-to-openapi";
-import { z } from "zod";
+import type { OpenAPIRegistry } from "@asteasolutions/zod-to-openapi";
+import type { z } from "zod";
 
 export function createDirectApiResponse<T extends z.ZodTypeAny>(
 	registry: OpenAPIRegistry,
@@ -28,4 +28,50 @@ export function createApiResponse<T extends z.ZodTypeAny>(
 	description: string,
 ) {
 	return createDirectApiResponse(registry, schemaName, schema, description);
+}
+
+export function createRequestSchema<T extends z.ZodTypeAny>(
+	registry: OpenAPIRegistry,
+	schemaName: string,
+	schema: T,
+) {
+	const registeredSchema = registry.register(schemaName, schema);
+
+	return {
+		query: registeredSchema,
+	};
+}
+
+export function createDirectRequestSchema<T extends z.ZodTypeAny>(
+	registry: OpenAPIRegistry,
+	schemaName: string,
+	schema: T,
+) {
+	return createRequestSchema(registry, schemaName, schema);
+}
+
+export function createRequestBodySchema<T extends z.ZodTypeAny>(
+	registry: OpenAPIRegistry,
+	schemaName: string,
+	schema: T,
+) {
+	const registeredSchema = registry.register(schemaName, schema);
+
+	return {
+		body: {
+			content: {
+				"application/json": {
+					schema: registeredSchema,
+				},
+			},
+		},
+	};
+}
+
+export function createDirectRequestBodySchema<T extends z.ZodTypeAny>(
+	registry: OpenAPIRegistry,
+	schemaName: string,
+	schema: T,
+) {
+	return createRequestBodySchema(registry, schemaName, schema);
 }

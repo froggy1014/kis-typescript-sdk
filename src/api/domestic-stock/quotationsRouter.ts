@@ -3,7 +3,7 @@
 import { extendZodWithOpenApi, OpenAPIRegistry } from "@asteasolutions/zod-to-openapi";
 import express, { type Router } from "express";
 import { z } from "zod";
-import { createDirectApiResponse } from "@/api-docs/openAPIResponseBuilders";
+import { createDirectApiResponse, createDirectRequestSchema } from "@/api-docs/openAPIResponseBuilders";
 
 extendZodWithOpenApi(z);
 
@@ -440,12 +440,14 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"StockCurrentPriceRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드 (J: 주식)"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리, 예: 005930)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"StockCurrentPriceResponse",
@@ -467,12 +469,14 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"DetailedPriceRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"DetailedPriceResponse",
@@ -494,12 +498,14 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"TransactionRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"TransactionResponse",
@@ -521,14 +527,16 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"DailyPriceRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 			FID_PERIOD_DIV_CODE: z.enum(["D", "W", "M"]).default("D").describe("기간분류코드 (D:일봉, W:주봉, M:월봉)"),
 			FID_ORG_ADJ_PRC: z.enum(["0", "1"]).default("0").describe("수정주가 여부 (0:수정안함, 1:수정함)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"DailyPriceResponse",
@@ -550,12 +558,14 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"AskingPriceExpectedRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"AskingPriceExpectedResponse",
@@ -577,12 +587,14 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"InvestorRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"InvestorResponse",
@@ -604,12 +616,14 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"MemberRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"MemberResponse",
@@ -631,8 +645,10 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"PeriodChartRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 			FID_INPUT_DATE_1: z.string().describe("시작일자 (YYYYMMDD)"),
@@ -640,7 +656,7 @@ domesticQuotationsRegistry.registerPath({
 			FID_PERIOD_DIV_CODE: z.enum(["D", "W", "M", "Y"]).describe("기간분류코드 (D:일봉, W:주봉, M:월봉, Y:년봉)"),
 			FID_ORG_ADJ_PRC: z.enum(["0", "1"]).default("0").describe("수정죽가 여부 (0:수정안함, 1:수정함)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"PeriodChartResponse",
@@ -662,14 +678,16 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"IntradayChartRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 			FID_INPUT_HOUR_1: z.string().describe("시작시간 (HHMMSS)"),
 			FID_PW_DATA_INCU_YN: z.enum(["Y", "N"]).default("Y").describe("과거 데이터 포함 여부"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"IntradayChartResponse",
@@ -691,14 +709,16 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"TimeTransactionRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 			FID_INPUT_HOUR_1: z.string().describe("시작시간 (HHMMSS)"),
 			FID_INPUT_HOUR_2: z.string().describe("종료시간 (HHMMSS)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"TimeTransactionResponse",
@@ -720,12 +740,14 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"OvertimePriceRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"OvertimePriceResponse",
@@ -998,13 +1020,15 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"ETFComponentStockRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
 			FID_COND_SCR_DIV_CODE: z.string().default("11216").describe("조건화면분류코드"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"ETFComponentStockResponse",
@@ -1026,14 +1050,16 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"NAVComparisonTrendRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
 			FID_INPUT_DATE_1: z.string().describe("시작일자 (YYYYMMDD)"),
 			FID_INPUT_DATE_2: z.string().describe("종료일자 (YYYYMMDD)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"NAVComparisonTrendResponse",
@@ -1055,12 +1081,14 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"OvertimeDailyPriceRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"OvertimeDailyPriceResponse",
@@ -1082,12 +1110,14 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"OvertimeAskingPriceRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"OvertimeAskingPriceResponse",
@@ -1109,15 +1139,17 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"DailyChartRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 			FID_INPUT_DATE_1: z.string().describe("시작일자 (YYYYMMDD)"),
 			FID_PERIOD_DIV_CODE: z.enum(["1", "5", "10", "15", "30", "60"]).describe("분 간격 (1,5,10,15,30,60)"),
 			FID_ORG_ADJ_PRC: z.enum(["0", "1"]).default("0").describe("수정주가 여부 (0:수정안함, 1:수정함)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"DailyChartResponse",
@@ -1139,14 +1171,16 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"NAVComparisonDailyTrendRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
 			FID_INPUT_DATE_1: z.string().describe("시작일자 (YYYYMMDD)"),
 			FID_INPUT_DATE_2: z.string().describe("종료일자 (YYYYMMDD)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"NAVComparisonDailyTrendResponse",
@@ -1168,15 +1202,17 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"NAVComparisonTimeTrendRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
 			FID_INPUT_DATE_1: z.string().describe("조회일자 (YYYYMMDD)"),
 			FID_INPUT_HOUR_1: z.string().describe("시작시간 (HHMMSS)"),
 			FID_INPUT_HOUR_2: z.string().describe("종료시간 (HHMMSS)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"NAVComparisonTimeTrendResponse",
@@ -1198,12 +1234,14 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"ETFETNCurrentPriceRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"ETFETNCurrentPriceResponse",
@@ -1225,15 +1263,17 @@ domesticQuotationsRegistry.registerPath({
 		{ TransactionId: [] },
 		{ CustomerType: [] }
 	],
-	request: {
-		query: z.object({
+	request: createDirectRequestSchema(
+		domesticQuotationsRegistry,
+		"ExpectedClosingPriceRequest",
+		z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_COND_SCR_DIV_CODE: z.string().default("20171").describe("조건화면분류코드"),
 			FID_INPUT_ISCD: z.string().optional().describe("종목코드 (전체조회시 생략)"),
 			FID_DIV_CLS_CODE: z.enum(["0", "1"]).default("0").describe("분류구분코드 (0:전체, 1:특정종목)"),
 			FID_RANK_SORT_CLS_CODE: z.enum(["0", "1"]).default("0").describe("순위정렬구분코드 (0:상승률순, 1:하락률순)"),
 		}),
-	},
+	),
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
 		"ExpectedClosingPriceResponse",
