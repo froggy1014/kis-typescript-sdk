@@ -4,12 +4,12 @@ import { getApiInfo, getTrId, supportsMockTrading } from "../utils/kis-tr-id-map
 /**
  * URL에서 /uapi 접두사를 제거하고 TR_ID를 가져오는 함수
  */
-function getTrIdFromUrl(url: string, environment: 'real' | 'mock' = 'real'): string | undefined {
+function getTrIdFromUrl(url: string, environment: "real" | "mock" = "real"): string | undefined {
 	// 쿼리 파라미터 제거
-	const pathWithoutQuery = url.split('?')[0];
+	const pathWithoutQuery = url.split("?")[0];
 
 	// /uapi 접두사 제거
-	const normalizedPath = pathWithoutQuery.replace(/^\/uapi/, '');
+	const normalizedPath = pathWithoutQuery.replace(/^\/uapi/, "");
 
 	// 매핑된 TR_ID 조회
 	const trId = getTrId(normalizedPath, environment);
@@ -19,7 +19,7 @@ function getTrIdFromUrl(url: string, environment: 'real' | 'mock' = 'real'): str
 	}
 
 	// OAuth 엔드포인트 특별 처리
-	if (pathWithoutQuery.includes('/oauth2/')) {
+	if (pathWithoutQuery.includes("/oauth2/")) {
 		return "OAUTH2";
 	}
 
@@ -45,25 +45,25 @@ customInstance.interceptors.request.use(
 
 		config.headers.appkey = process.env.KIS_APP_KEY;
 		config.headers.appsecret = process.env.KIS_APP_SECRET;
-		config.headers.authentication = `Bearer${process.env.KIS_ACCESS_TOKEN}`;
+		config.headers.authentication = `Bearer ${process.env.KIS_ACCESS_TOKEN}`;
 		config.headers.custtype = process.env.KIS_CUST_TYPE;
 
 		// 환경 감지 (모의투자 vs 실전투자)
 		const baseUrl = config.baseURL || customInstance.defaults.baseURL || "";
 		const isMockTrading = baseUrl.includes("openapivts") || baseUrl.includes("29443");
-		const environment = isMockTrading ? 'mock' : 'real';
+		const environment = isMockTrading ? "mock" : "real";
 
 		// URL에 따라 자동으로 TR_ID 설정
 		const trId = getTrIdFromUrl(config.url || "", environment);
 		if (trId) {
 			config.headers.tr_id = trId;
 			if (process.env.NODE_ENV === "development") {
-				const normalizedUrl = (config.url || "").replace(/^\/uapi/, '');
+				const normalizedUrl = (config.url || "").replace(/^\/uapi/, "");
 				const apiInfo = getApiInfo(normalizedUrl);
 				console.log(`[TR_ID Auto Mapping] ${config.url} -> ${trId} (${environment})`);
 				if (apiInfo) {
 					console.log(`[API Info] ${apiInfo.name} (${apiInfo.category})`);
-					if (environment === 'mock' && !supportsMockTrading(normalizedUrl)) {
+					if (environment === "mock" && !supportsMockTrading(normalizedUrl)) {
 						console.warn(`[Mock Trading Warning] This endpoint may not support mock trading`);
 					}
 				}

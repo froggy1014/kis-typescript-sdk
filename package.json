@@ -1,6 +1,6 @@
 {
 	"name": "kis-typescript-sdk",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Korea Investment Securities API TypeScript SDK with OpenAPI documentation",
 	"author": "froggy1014",
 	"repository": "froggy1014/kis-typescript-sdk",
