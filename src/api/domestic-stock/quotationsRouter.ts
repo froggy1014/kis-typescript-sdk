@@ -3,7 +3,7 @@
 import { extendZodWithOpenApi, OpenAPIRegistry } from "@asteasolutions/zod-to-openapi";
 import express, { type Router } from "express";
 import { z } from "zod";
-import { createDirectApiResponse, createDirectRequestSchema } from "@/api-docs/openAPIResponseBuilders";
+import { createDirectApiResponse, createObjectBasedRequestSchema } from "@/api-docs/openAPIResponseBuilders";
 
 extendZodWithOpenApi(z);
 
@@ -434,13 +434,8 @@ domesticQuotationsRegistry.registerPath({
 	description: `국내주식의 현재가 시세 정보를 조회합니다
 
 **TR_ID:** FHKST01010100 (실전/모의 동일)`,
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"StockCurrentPriceRequest",
 		z.object({
@@ -463,13 +458,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 시세2",
 	description: "주식의 추가 시세 정보를 조회합니다 (TR_ID: FHPST01010000)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"DetailedPriceRequest",
 		z.object({
@@ -492,13 +482,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 체결",
 	description: "주식의 체결 내역 정보를 조회합니다 (TR_ID: FHKST01010300)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"TransactionRequest",
 		z.object({
@@ -521,13 +506,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 일자별",
 	description: "주식의 일자별 시세 정보를 조회합니다 (TR_ID: FHKST01010400)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"DailyPriceRequest",
 		z.object({
@@ -552,13 +532,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 호가/예상체결",
 	description: "주식의 호가 정보와 예상체결 정보를 조회합니다 (TR_ID: FHKST01010200)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"AskingPriceExpectedRequest",
 		z.object({
@@ -581,13 +556,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 투자자",
 	description: "주식의 투자자별 매매 동향을 조회합니다 (TR_ID: FHKST01010900)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"InvestorRequest",
 		z.object({
@@ -610,13 +580,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 회원사",
 	description: "주식의 회원사별 매매 동향을 조회합니다 (TR_ID: FHKST01010600)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"MemberRequest",
 		z.object({
@@ -639,13 +604,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "국내주식기간별시세(일/주/월/년)",
 	description: "주식의 기간별 차트 데이터를 조회합니다 (TR_ID: FHKST03010100)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"PeriodChartRequest",
 		z.object({
@@ -672,13 +632,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식당일분봉조회",
 	description: "주식의 당일 분봉 차트 데이터를 조회합니다 (TR_ID: FHKST03010200)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"IntradayChartRequest",
 		z.object({
@@ -703,13 +658,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 당일시간대별체결",
 	description: "주식의 시간대별 체결 내역을 조회합니다 (TR_ID: FHPST01060000)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"TimeTransactionRequest",
 		z.object({
@@ -734,13 +684,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "국내주식 시간외현재가",
 	description: "주식의 시간외 현재가 정보를 조회합니다 (TR_ID: FHPST02300000)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"OvertimePriceRequest",
 		z.object({
@@ -1014,13 +959,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "ETF 구성종목시세",
 	description: "ETF의 구성종목 시세 정보를 조회합니다 (TR_ID: FHKST121600C0)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"ETFComponentStockRequest",
 		z.object({
@@ -1044,13 +984,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "NAV 비교추이(종목)",
 	description: "ETF/ETN의 NAV 비교추이를 종목별로 조회합니다 (TR_ID: FHPST02440000)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"NAVComparisonTrendRequest",
 		z.object({
@@ -1075,13 +1010,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 시간외일자별주가",
 	description: "주식의 시간외 일자별 주가 정보를 조회합니다 (TR_ID: FHPST02320000)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"OvertimeDailyPriceRequest",
 		z.object({
@@ -1104,13 +1034,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "국내주식 시간외호가",
 	description: "주식의 시간외 호가 정보를 조회합니다 (TR_ID: FHPST02300400)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"OvertimeAskingPriceRequest",
 		z.object({
@@ -1133,13 +1058,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식일별분봉조회",
 	description: "주식의 일별 분봉 차트 데이터를 조회합니다 (TR_ID: FHKST03010230)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"DailyChartRequest",
 		z.object({
@@ -1165,13 +1085,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "NAV 비교추이(일)",
 	description: "ETF/ETN의 NAV 비교추이를 일별로 조회합니다 (TR_ID: FHPST02440200)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"NAVComparisonDailyTrendRequest",
 		z.object({
@@ -1196,13 +1111,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "NAV 비교추이(분)",
 	description: "ETF/ETN의 NAV 비교추이를 분별로 조회합니다 (TR_ID: FHPST02440100)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"NAVComparisonTimeTrendRequest",
 		z.object({
@@ -1228,13 +1138,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "ETF/ETN 현재가",
 	description: "ETF/ETN의 현재가 정보를 조회합니다 (TR_ID: FHPST02400000)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"ETFETNCurrentPriceRequest",
 		z.object({
@@ -1257,13 +1162,8 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "국내주식 장마감 예상체결가",
 	description: "국내주식의 장마감 예상체결가를 조회합니다 (TR_ID: FHKST117300C0)",
-	security: [
-		{ KoreaInvestmentAuth: [] },
-		{ KoreaInvestmentSecret: [] },
-		{ TransactionId: [] },
-		{ CustomerType: [] }
-	],
-	request: createDirectRequestSchema(
+	security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }, { TransactionId: [] }, { CustomerType: [] }],
+	request: createObjectBasedRequestSchema(
 		domesticQuotationsRegistry,
 		"ExpectedClosingPriceRequest",
 		z.object({

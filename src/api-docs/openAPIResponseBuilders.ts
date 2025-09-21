@@ -75,3 +75,15 @@ export function createDirectRequestBodySchema<T extends z.ZodTypeAny>(
 ) {
 	return createRequestBodySchema(registry, schemaName, schema);
 }
+
+export function createObjectBasedRequestSchema<T extends z.ZodTypeAny>(
+	registry: OpenAPIRegistry,
+	schemaName: string,
+	schema: T,
+) {
+	const registeredSchema = registry.register(schemaName, schema);
+
+	return {
+		query: registeredSchema,
+	};
+}

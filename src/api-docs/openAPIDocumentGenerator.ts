@@ -2,15 +2,12 @@ import { OpenAPIRegistry, OpenApiGeneratorV31 } from "@asteasolutions/zod-to-ope
 import { domesticQuotationsRegistry } from "../api/domestic-stock/quotationsRouter";
 import { oauthRegistry } from "../api/oauth/oauthRouter";
 
-export function generateOpenAPIDocument(): any {
+export function generateOpenAPIDocument(): Record<string, any> {
 	// Create main registry and merge all registries
 	const registry = new OpenAPIRegistry();
 
 	// Merge all registries
-	const registries = [
-		domesticQuotationsRegistry,
-		oauthRegistry,
-	];
+	const registries = [domesticQuotationsRegistry, oauthRegistry];
 
 	registries.forEach((subRegistry) => {
 		// @ts-ignore - accessing private property for merging
@@ -29,7 +26,8 @@ export function generateOpenAPIDocument(): any {
 			title: "Korea Investment API",
 			version: "1.0.0",
 			description: `
-# 한국투자증권 OpenAPI TypeScript Implementation
+[OpenAPI json 링크](http://localhost:8080/swagger.json)\n
+[API 문서 링크](https://api.koreainvestment.com/openapi/docs)
 
 ## 🔐 인증 방법
 1. **상단의 "Authorize" 버튼을 클릭**하여 API 키들을 입력하세요
@@ -77,8 +75,8 @@ export function generateOpenAPIDocument(): any {
 			KoreaInvestmentAuth: [],
 			KoreaInvestmentSecret: [],
 			TransactionId: [],
-			CustomerType: []
-		}
+			CustomerType: [],
+		},
 	];
 
 	// Add security schemes after generating the document
@@ -118,5 +116,68 @@ export function generateOpenAPIDocument(): any {
 		},
 	};
 
+	// Post-process to convert query parameters to object-style parameters
+	postProcessQueryParameters(document);
+
 	return document;
+}
+
+/**
+ * Post-processes the OpenAPI document to convert individual query parameters
+ * to object-style parameters with deepObject style
+ */
+function postProcessQueryParameters(document: any): void {
+	if (!document.paths) return;
+
+	for (const pathKey in document.paths) {
+		const path = document.paths[pathKey];
+		for (const method in path) {
+			const operation = path[method];
+			if (!operation.parameters) continue;
+
+			// Group query parameters that belong to the same schema
+			const queryParams = operation.parameters.filter((p: any) => p.in === "query");
+			if (queryParams.length <= 1) continue;
+
+			// Find potential request schema names from the components.schemas
+			const potentialSchemas = Object.keys(document.components?.schemas || {}).filter((name) =>
+				name.endsWith("Request"),
+			);
+
+			// Try to find a matching schema based on the query parameter names
+			let matchingSchema: string | null = null;
+			for (const schemaName of potentialSchemas) {
+				const schema = document.components.schemas[schemaName];
+				if (schema?.type === "object" && schema.properties) {
+					const schemaProps = Object.keys(schema.properties);
+					const queryParamNames = queryParams.map((p: any) => p.name);
+
+					// Check if all query parameter names match schema properties
+					if (
+						queryParamNames.every((name: string) => schemaProps.includes(name)) &&
+						schemaProps.every((prop: string) => queryParamNames.includes(prop))
+					) {
+						matchingSchema = schemaName;
+						break;
+					}
+				}
+			}
+
+			if (!matchingSchema) continue;
+
+			// Replace individual query parameters with a single object parameter
+			operation.parameters = operation.parameters.filter((p: any) => p.in !== "query");
+			operation.parameters.push({
+				name: matchingSchema.toLowerCase(),
+				in: "query",
+				style: "deepObject",
+				explode: true,
+				schema: {
+					$ref: `#/components/schemas/${matchingSchema}`,
+				},
+				description: `${matchingSchema} object parameter`,
+				required: true,
+			});
+		}
+	}
 }
