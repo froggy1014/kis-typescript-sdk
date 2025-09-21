@@ -7,6 +7,9 @@
 	"license": "MIT",
 	"main": "./build/index.js",
 	"private": false,
+	"files": [
+		"dist/"
+	],
 	"scripts": {
 		"build": "tsc && tsdown",
 		"start:dev": "node --import=tsx --watch src/index.ts",
