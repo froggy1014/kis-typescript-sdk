@@ -11,7 +11,7 @@
     "dist/package/"
   ],
   "scripts": {
-    "build": "npm run generate && tsc && tsdown",
+    "build": "npm run generate && tsc && tsdown && npm run generate:swagger-html",
     "start": "node dist/index.js",
     "dev": "node --import=tsx --watch src/index.ts",
     "start:dev": "node --import=tsx --watch src/index.ts",
@@ -20,7 +20,8 @@
     "generate:openapi": "node --import=tsx scripts/generate-open-api.ts",
     "generate:tr-mappings": "node --import=tsx scripts/generate-tr-id-mappings.ts",
     "generate:kis-api": "orval --config orval.config.ts",
-    "generate": "npm run generate:openapi && npm run generate:tr-mappings && npm run generate:kis-api"
+    "generate:swagger-html": "openapi-generate-html -i openapi.json -o dist/index.html --ui=swagger --theme=dark",
+    "generate": "mkdir -p dist && npm run generate:openapi && npm run generate:tr-mappings && npm run generate:kis-api"
   },
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "7.3.4",
@@ -36,6 +37,7 @@
     "@types/cors": "2.8.19",
     "@types/express": "5.0.3",
     "@types/swagger-ui-express": "4.1.8",
+    "openapi-generate-html": "^0.5.3",
     "orval": "^7.11.2",
     "tsdown": "^0.15.4",
     "tsx": "4.20.4",
