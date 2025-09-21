@@ -40,7 +40,17 @@ customInstance.interceptors.request.use(
 	(config) => {
 		// 요청 로깅 (개발 환경에서만)
 		if (process.env.NODE_ENV === "development") {
-			console.log(`[API Request] ${config.method?.toUpperCase()} ${config.url}`, config.data || config.params);
+			const method = config.method?.toUpperCase();
+			const logData: Record<string, any> = {};
+
+			if (config.data) {
+				logData.data = config.data;
+			}
+			if (config.params) {
+				logData.params = config.params;
+			}
+
+			console.log(`[API Request] ${method} ${config.url}`, logData);
 		}
 
 		config.headers.appkey = process.env.KIS_APP_KEY;
