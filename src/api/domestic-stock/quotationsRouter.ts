@@ -455,13 +455,13 @@ domesticQuotationsRegistry.registerPath({
 	),
 });
 
-// 호가/예상체결
+// 주식현재가 시세 2
 domesticQuotationsRegistry.registerPath({
 	method: "get",
-	path: "/uapi/domestic-stock/v1/quotations/inquire-asking-price-exp-ccn",
+	path: "/uapi/domestic-stock/v1/quotations/inquire-price-2",
 	tags: ["국내주식 기본시세"],
-	summary: "주식현재가 호가/예상체결",
-	description: "주식의 호가 정보와 예상체결 정보를 조회합니다 (TR_ID: FHKST01010200)",
+	summary: "주식현재가 시세2",
+	description: "주식의 추가 시세 정보를 조회합니다 (TR_ID: FHPST01010000)",
 	security: [{ bearerAuth: [] }],
 	request: {
 		query: z.object({
@@ -471,15 +471,43 @@ domesticQuotationsRegistry.registerPath({
 		headers: z.object({
 			appkey: z.string().describe("앱키"),
 			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHKST01010200").describe("거래ID"),
+			tr_id: z.string().default("FHPST01010000").describe("거래ID"),
 			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
-		"AskingPriceExpectedResponse",
-		AskingPriceExpectedResponseSchema,
-		"호가/예상체결 조회 성공",
+		"DetailedPriceResponse",
+		DetailedPriceResponseSchema,
+		"주식 시세 2 조회 성공",
+	),
+});
+
+// 주식현재가 체결
+domesticQuotationsRegistry.registerPath({
+	method: "get",
+	path: "/uapi/domestic-stock/v1/quotations/inquire-ccnl",
+	tags: ["국내주식 기본시세"],
+	summary: "주식현재가 체결",
+	description: "주식의 체결 내역 정보를 조회합니다 (TR_ID: FHKST01010300)",
+	security: [{ bearerAuth: [] }],
+	request: {
+		query: z.object({
+			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
+			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
+		}),
+		headers: z.object({
+			appkey: z.string().describe("앱키"),
+			appsecret: z.string().describe("앱시크릿"),
+			tr_id: z.string().default("FHKST01010300").describe("거래ID"),
+			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
+		}),
+	},
+	responses: createDirectApiResponse(
+		domesticQuotationsRegistry,
+		"TransactionResponse",
+		TransactionResponseSchema,
+		"주식 체결 조회 성공",
 	),
 });
 
@@ -513,13 +541,13 @@ domesticQuotationsRegistry.registerPath({
 	),
 });
 
-// 주식현재가 체결
+// 호가/예상체결
 domesticQuotationsRegistry.registerPath({
 	method: "get",
-	path: "/uapi/domestic-stock/v1/quotations/inquire-ccnl",
+	path: "/uapi/domestic-stock/v1/quotations/inquire-asking-price-exp-ccn",
 	tags: ["국내주식 기본시세"],
-	summary: "주식현재가 체결",
-	description: "주식의 체결 내역 정보를 조회합니다 (TR_ID: FHKST01010300)",
+	summary: "주식현재가 호가/예상체결",
+	description: "주식의 호가 정보와 예상체결 정보를 조회합니다 (TR_ID: FHKST01010200)",
 	security: [{ bearerAuth: [] }],
 	request: {
 		query: z.object({
@@ -529,15 +557,15 @@ domesticQuotationsRegistry.registerPath({
 		headers: z.object({
 			appkey: z.string().describe("앱키"),
 			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHKST01010300").describe("거래ID"),
+			tr_id: z.string().default("FHKST01010200").describe("거래ID"),
 			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
 		domesticQuotationsRegistry,
-		"TransactionResponse",
-		TransactionResponseSchema,
-		"주식 체결 조회 성공",
+		"AskingPriceExpectedResponse",
+		AskingPriceExpectedResponseSchema,
+		"호가/예상체결 조회 성공",
 	),
 });
 
@@ -594,34 +622,6 @@ domesticQuotationsRegistry.registerPath({
 		"MemberResponse",
 		MemberResponseSchema,
 		"회원사 매매동향 조회 성공",
-	),
-});
-
-// 주식현재가 시세 2
-domesticQuotationsRegistry.registerPath({
-	method: "get",
-	path: "/uapi/domestic-stock/v1/quotations/inquire-price-2",
-	tags: ["국내주식 기본시세"],
-	summary: "주식현재가 시세 2",
-	description: "주식의 추가 시세 정보를 조회합니다 (TR_ID: FHPST01010000)",
-	security: [{ bearerAuth: [] }],
-	request: {
-		query: z.object({
-			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
-			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHPST01010000").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
-		}),
-	},
-	responses: createDirectApiResponse(
-		domesticQuotationsRegistry,
-		"DetailedPriceResponse",
-		DetailedPriceResponseSchema,
-		"주식 시세 2 조회 성공",
 	),
 });
 
