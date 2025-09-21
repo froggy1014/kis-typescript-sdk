@@ -30,26 +30,6 @@ export function createApiResponse<T extends z.ZodTypeAny>(
 	return createDirectApiResponse(registry, schemaName, schema, description);
 }
 
-export function createRequestSchema<T extends z.ZodTypeAny>(
-	registry: OpenAPIRegistry,
-	schemaName: string,
-	schema: T,
-) {
-	const registeredSchema = registry.register(schemaName, schema);
-
-	return {
-		query: registeredSchema,
-	};
-}
-
-export function createDirectRequestSchema<T extends z.ZodTypeAny>(
-	registry: OpenAPIRegistry,
-	schemaName: string,
-	schema: T,
-) {
-	return createRequestSchema(registry, schemaName, schema);
-}
-
 export function createRequestBodySchema<T extends z.ZodTypeAny>(
 	registry: OpenAPIRegistry,
 	schemaName: string,
@@ -74,16 +54,4 @@ export function createDirectRequestBodySchema<T extends z.ZodTypeAny>(
 	schema: T,
 ) {
 	return createRequestBodySchema(registry, schemaName, schema);
-}
-
-export function createObjectBasedRequestSchema<T extends z.ZodTypeAny>(
-	registry: OpenAPIRegistry,
-	schemaName: string,
-	schema: T,
-) {
-	const registeredSchema = registry.register(schemaName, schema);
-
-	return {
-		query: registeredSchema,
-	};
 }
