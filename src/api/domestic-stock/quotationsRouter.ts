@@ -434,17 +434,16 @@ domesticQuotationsRegistry.registerPath({
 	description: `국내주식의 현재가 시세 정보를 조회합니다
 
 **TR_ID:** FHKST01010100 (실전/모의 동일)`,
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드 (J: 주식)"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리, 예: 005930)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHKST01010100").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입 (P:개인, B:법인)"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -462,17 +461,16 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 시세2",
 	description: "주식의 추가 시세 정보를 조회합니다 (TR_ID: FHPST01010000)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHPST01010000").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -490,17 +488,16 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 체결",
 	description: "주식의 체결 내역 정보를 조회합니다 (TR_ID: FHKST01010300)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHKST01010300").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -518,19 +515,18 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 일자별",
 	description: "주식의 일자별 시세 정보를 조회합니다 (TR_ID: FHKST01010400)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 			FID_PERIOD_DIV_CODE: z.enum(["D", "W", "M"]).default("D").describe("기간분류코드 (D:일봉, W:주봉, M:월봉)"),
 			FID_ORG_ADJ_PRC: z.enum(["0", "1"]).default("0").describe("수정주가 여부 (0:수정안함, 1:수정함)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHKST01010400").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -548,17 +544,16 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 호가/예상체결",
 	description: "주식의 호가 정보와 예상체결 정보를 조회합니다 (TR_ID: FHKST01010200)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHKST01010200").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -576,17 +571,16 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 투자자",
 	description: "주식의 투자자별 매매 동향을 조회합니다 (TR_ID: FHKST01010900)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHKST01010900").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -604,17 +598,16 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 회원사",
 	description: "주식의 회원사별 매매 동향을 조회합니다 (TR_ID: FHKST01010600)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHKST01010600").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -632,7 +625,12 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "국내주식기간별시세(일/주/월/년)",
 	description: "주식의 기간별 차트 데이터를 조회합니다 (TR_ID: FHKST03010100)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
@@ -641,12 +639,6 @@ domesticQuotationsRegistry.registerPath({
 			FID_INPUT_DATE_2: z.string().describe("종료일자 (YYYYMMDD)"),
 			FID_PERIOD_DIV_CODE: z.enum(["D", "W", "M", "Y"]).describe("기간분류코드 (D:일봉, W:주봉, M:월봉, Y:년봉)"),
 			FID_ORG_ADJ_PRC: z.enum(["0", "1"]).default("0").describe("수정죽가 여부 (0:수정안함, 1:수정함)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHKST03010100").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -664,19 +656,18 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식당일분봉조회",
 	description: "주식의 당일 분봉 차트 데이터를 조회합니다 (TR_ID: FHKST03010200)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 			FID_INPUT_HOUR_1: z.string().describe("시작시간 (HHMMSS)"),
 			FID_PW_DATA_INCU_YN: z.enum(["Y", "N"]).default("Y").describe("과거 데이터 포함 여부"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHKST03010200").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -694,19 +685,18 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 당일시간대별체결",
 	description: "주식의 시간대별 체결 내역을 조회합니다 (TR_ID: FHPST01060000)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
 			FID_INPUT_HOUR_1: z.string().describe("시작시간 (HHMMSS)"),
 			FID_INPUT_HOUR_2: z.string().describe("종료시간 (HHMMSS)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHPST01060000").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -724,17 +714,16 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "국내주식 시간외현재가",
 	description: "주식의 시간외 현재가 정보를 조회합니다 (TR_ID: FHPST02300000)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHPST02300000").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -1003,18 +992,17 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "ETF 구성종목시세",
 	description: "ETF의 구성종목 시세 정보를 조회합니다 (TR_ID: FHKST121600C0)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
 			FID_COND_SCR_DIV_CODE: z.string().default("11216").describe("조건화면분류코드"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHKST121600C0").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -1032,19 +1020,18 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "NAV 비교추이(종목)",
 	description: "ETF/ETN의 NAV 비교추이를 종목별로 조회합니다 (TR_ID: FHPST02440000)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
 			FID_INPUT_DATE_1: z.string().describe("시작일자 (YYYYMMDD)"),
 			FID_INPUT_DATE_2: z.string().describe("종료일자 (YYYYMMDD)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHPST02440000").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -1062,17 +1049,16 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 시간외일자별주가",
 	description: "주식의 시간외 일자별 주가 정보를 조회합니다 (TR_ID: FHPST02320000)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHPST02320000").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -1090,17 +1076,16 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "국내주식 시간외호가",
 	description: "주식의 시간외 호가 정보를 조회합니다 (TR_ID: FHPST02300400)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(6).describe("종목코드 (6자리)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHPST02300400").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -1118,7 +1103,12 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "주식일별분봉조회",
 	description: "주식의 일별 분봉 차트 데이터를 조회합니다 (TR_ID: FHKST03010230)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
@@ -1126,12 +1116,6 @@ domesticQuotationsRegistry.registerPath({
 			FID_INPUT_DATE_1: z.string().describe("시작일자 (YYYYMMDD)"),
 			FID_PERIOD_DIV_CODE: z.enum(["1", "5", "10", "15", "30", "60"]).describe("분 간격 (1,5,10,15,30,60)"),
 			FID_ORG_ADJ_PRC: z.enum(["0", "1"]).default("0").describe("수정주가 여부 (0:수정안함, 1:수정함)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHKST03010230").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -1149,19 +1133,18 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "NAV 비교추이(일)",
 	description: "ETF/ETN의 NAV 비교추이를 일별로 조회합니다 (TR_ID: FHPST02440200)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
 			FID_INPUT_DATE_1: z.string().describe("시작일자 (YYYYMMDD)"),
 			FID_INPUT_DATE_2: z.string().describe("종료일자 (YYYYMMDD)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHPST02440200").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -1179,7 +1162,12 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "NAV 비교추이(분)",
 	description: "ETF/ETN의 NAV 비교추이를 분별로 조회합니다 (TR_ID: FHPST02440100)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
@@ -1187,12 +1175,6 @@ domesticQuotationsRegistry.registerPath({
 			FID_INPUT_DATE_1: z.string().describe("조회일자 (YYYYMMDD)"),
 			FID_INPUT_HOUR_1: z.string().describe("시작시간 (HHMMSS)"),
 			FID_INPUT_HOUR_2: z.string().describe("종료시간 (HHMMSS)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHPST02440100").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -1210,17 +1192,16 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "ETF/ETN 현재가",
 	description: "ETF/ETN의 현재가 정보를 조회합니다 (TR_ID: FHPST02400000)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
 			FID_INPUT_ISCD: z.string().min(6).max(12).describe("종목코드"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHPST02400000").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(
@@ -1238,7 +1219,12 @@ domesticQuotationsRegistry.registerPath({
 	tags: ["domestic-stock-quotations"],
 	summary: "국내주식 장마감 예상체결가",
 	description: "국내주식의 장마감 예상체결가를 조회합니다 (TR_ID: FHKST117300C0)",
-	security: [{ bearerAuth: [] }],
+	security: [
+		{ KoreaInvestmentAuth: [] },
+		{ KoreaInvestmentSecret: [] },
+		{ TransactionId: [] },
+		{ CustomerType: [] }
+	],
 	request: {
 		query: z.object({
 			FID_COND_MRKT_DIV_CODE: z.enum(["J"]).default("J").describe("조건 시장 분류 코드"),
@@ -1246,12 +1232,6 @@ domesticQuotationsRegistry.registerPath({
 			FID_INPUT_ISCD: z.string().optional().describe("종목코드 (전체조회시 생략)"),
 			FID_DIV_CLS_CODE: z.enum(["0", "1"]).default("0").describe("분류구분코드 (0:전체, 1:특정종목)"),
 			FID_RANK_SORT_CLS_CODE: z.enum(["0", "1"]).default("0").describe("순위정렬구분코드 (0:상승률순, 1:하락률순)"),
-		}),
-		headers: z.object({
-			appkey: z.string().describe("앱키"),
-			appsecret: z.string().describe("앱시크릿"),
-			tr_id: z.string().default("FHKST117300C0").describe("거래ID"),
-			custtype: z.enum(["P", "B"]).default("P").describe("고객타입"),
 		}),
 	},
 	responses: createDirectApiResponse(

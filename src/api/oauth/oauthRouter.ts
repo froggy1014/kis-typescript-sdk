@@ -17,6 +17,10 @@ oauthRegistry.registerPath({
   tags: ["oauth"],
   summary: "Hashkey 생성",
   description: "API 호출 시 필요한 hashkey를 생성합니다",
+  security: [
+    { KoreaInvestmentAuth: [] },
+    { KoreaInvestmentSecret: [] }
+  ],
   request: {
     body: {
       content: {
@@ -27,10 +31,6 @@ oauthRegistry.registerPath({
         },
       },
     },
-    headers: z.object({
-      appkey: z.string().describe("앱키"),
-      appsecret: z.string().describe("앱시크릿"),
-    }),
   },
   responses: createApiResponse(
     oauthRegistry,
@@ -49,15 +49,17 @@ oauthRegistry.registerPath({
   tags: ["oauth"],
   summary: "접근토큰 발급(P)",
   description: "한국투자증권 API 접근을 위한 토큰을 발급받습니다",
+  security: [
+    { KoreaInvestmentAuth: [] },
+    { KoreaInvestmentSecret: [] }
+  ],
   request: {
     body: {
       content: {
         "application/json": {
           schema: z.object({
             grant_type: z.string().default("client_credentials").describe("권한 부여 타입"),
-            appkey: z.string().describe("앱키"),
-            appsecret: z.string().describe("앱시크릿"),
-          }),
+                      }),
         },
       },
     },
@@ -82,14 +84,16 @@ oauthRegistry.registerPath({
   tags: ["oauth"],
   summary: "접근토큰 폐기(P)",
   description: "발급받은 접근토큰을 폐기합니다",
+  security: [
+    { KoreaInvestmentAuth: [] },
+    { KoreaInvestmentSecret: [] }
+  ],
   request: {
     body: {
       content: {
         "application/json": {
           schema: z.object({
-            appkey: z.string().describe("앱키"),
-            appsecret: z.string().describe("앱시크릿"),
-            token: z.string().describe("폐기할 토큰"),
+                        token: z.string().describe("폐기할 토큰"),
           }),
         },
       },
@@ -113,15 +117,17 @@ oauthRegistry.registerPath({
   tags: ["oauth"],
   summary: "실시간 (웹소켓) 접속키 발급",
   description: "웹소켓 실시간 시세를 위한 접속키를 발급받습니다",
-  security: [{ bearerAuth: [] }],
+  security: [
+    { KoreaInvestmentAuth: [] },
+    { KoreaInvestmentSecret: [] }
+  ],
   request: {
     body: {
       content: {
         "application/json": {
           schema: z.object({
             grant_type: z.string().default("client_credentials").describe("권한 부여 타입"),
-            appkey: z.string().describe("앱키"),
-            secretkey: z.string().describe("앱시크릿"),
+                  secretkey: z.string().describe("앱시크릿"),
           }),
         },
       },
