@@ -1,5 +1,5 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import fs from "node:fs";
+import path from "node:path";
 
 /**
  * 단일 패키지의 API 인덱스 파일을 생성하는 함수
@@ -14,8 +14,8 @@ function generateSingleApiIndex(apiDir: string): void {
   try {
     const entries = fs.readdirSync(apiDir, { withFileTypes: true });
     const directories = entries
-      .filter(entry => entry.isDirectory() && !entry.name.startsWith('.'))
-      .map(entry => entry.name)
+      .filter((entry) => entry.isDirectory() && !entry.name.startsWith("."))
+      .map((entry) => entry.name)
       .sort();
 
     if (directories.length === 0) {
@@ -27,9 +27,10 @@ function generateSingleApiIndex(apiDir: string): void {
     const exports = [];
     for (const dir of directories) {
       const dirPath = path.join(apiDir, dir);
-      const files = fs.readdirSync(dirPath, { withFileTypes: true })
-        .filter(entry => entry.isFile() && entry.name.endsWith('.ts'))
-        .map(entry => entry.name.replace('.ts', ''));
+      const files = fs
+        .readdirSync(dirPath, { withFileTypes: true })
+        .filter((entry) => entry.isFile() && entry.name.endsWith(".ts"))
+        .map((entry) => entry.name.replace(".ts", ""));
 
       for (const file of files) {
         exports.push(`export * from './${dir}/${file}';`);
@@ -38,16 +39,16 @@ function generateSingleApiIndex(apiDir: string): void {
 
     // index.ts 파일 내용 생성
     const indexContent = [
-      '// 이 파일은 orval output hook에 의해 자동 생성됩니다.',
-      '// 수동으로 편집하지 마세요.',
-      '',
+      "// 이 파일은 orval output hook에 의해 자동 생성됩니다.",
+      "// 수동으로 편집하지 마세요.",
+      "",
       ...exports,
-      ''
-    ].join('\n');
+      "",
+    ].join("\n");
 
-    const indexPath = path.join(apiDir, 'index.ts');
-    fs.writeFileSync(indexPath, indexContent, 'utf-8');
-    
+    const indexPath = path.join(apiDir, "index.ts");
+    fs.writeFileSync(indexPath, indexContent, "utf-8");
+
     const packageName = path.basename(path.dirname(path.dirname(apiDir)));
     console.log(`✅ ${packageName}: ${directories.length}개 API 모듈 index 생성 (glob 패턴으로 자동 entry 처리)`);
   } catch (error) {
@@ -59,22 +60,22 @@ function generateSingleApiIndex(apiDir: string): void {
  * src/index.ts 파일의 export 문들을 자동으로 활성화하는 함수
  */
 function updateMainIndex(packageDir: string): void {
-  const indexPath = path.join(packageDir, 'src', 'index.ts');
-  
+  const indexPath = path.join(packageDir, "src", "index.ts");
+
   if (!fs.existsSync(indexPath)) {
     console.log(`⚠️  메인 인덱스 파일이 존재하지 않음: ${indexPath}`);
     return;
   }
 
   try {
-    let content = fs.readFileSync(indexPath, 'utf-8');
-    
+    let content = fs.readFileSync(indexPath, "utf-8");
+
     // 주석 처리된 export 문들을 활성화
     content = content.replace(/\/\/ export \* from '\.\/api';/g, "export * from './api';");
     content = content.replace(/\/\/ export \* from '\.\/model';/g, "export * from './model';");
-    
-    fs.writeFileSync(indexPath, content, 'utf-8');
-    
+
+    fs.writeFileSync(indexPath, content, "utf-8");
+
     const packageName = path.basename(packageDir);
     console.log(`✅ ${packageName}: 메인 index.ts export 문들 활성화`);
   } catch (error) {
@@ -92,7 +93,7 @@ function generateGenIndex(genDir: string): void {
   }
 
   try {
-    const endpointsDir = path.join(genDir, 'endpoints');
+    const endpointsDir = path.join(genDir, "endpoints");
     if (!fs.existsSync(endpointsDir)) {
       console.log(`⚠️  Endpoints 디렉토리가 존재하지 않음: ${endpointsDir}`);
       return;
@@ -100,8 +101,8 @@ function generateGenIndex(genDir: string): void {
 
     const entries = fs.readdirSync(endpointsDir, { withFileTypes: true });
     const directories = entries
-      .filter(entry => entry.isDirectory() && !entry.name.startsWith('.'))
-      .map(entry => entry.name)
+      .filter((entry) => entry.isDirectory() && !entry.name.startsWith("."))
+      .map((entry) => entry.name)
       .sort();
 
     if (directories.length === 0) {
@@ -111,15 +112,15 @@ function generateGenIndex(genDir: string): void {
 
     // index.ts 파일 내용 생성
     const indexContent = [
-      '// 이 파일은 orval output hook에 의해 자동 생성됩니다.',
-      '// 수동으로 편집하지 마세요.',
-      '',
-      ...directories.map(dir => `export * from './endpoints/${dir}/${dir}.zod';`),
-      ''
-    ].join('\n');
+      "// 이 파일은 orval output hook에 의해 자동 생성됩니다.",
+      "// 수동으로 편집하지 마세요.",
+      "",
+      ...directories.map((dir) => `export * from './endpoints/${dir}/${dir}.zod';`),
+      "",
+    ].join("\n");
 
-    const indexPath = path.join(genDir, 'index.ts');
-    fs.writeFileSync(indexPath, indexContent, 'utf-8');
+    const indexPath = path.join(genDir, "index.ts");
+    fs.writeFileSync(indexPath, indexContent, "utf-8");
 
     console.log(`✅ Gen: ${directories.length}개 API 모듈 index 생성`);
   } catch (error) {

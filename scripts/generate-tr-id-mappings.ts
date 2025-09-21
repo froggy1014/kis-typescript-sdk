@@ -1,5 +1,5 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import fs from "node:fs";
+import path from "node:path";
 
 // CSV 파일 파싱 함수
 interface CSVRow {
@@ -7,8 +7,8 @@ interface CSVRow {
 }
 
 function parseCSV(csvContent: string): CSVRow[] {
-  const lines = csvContent.split('\n');
-  const headers = lines[0].split(',');
+  const lines = csvContent.split("\n");
+  const headers = lines[0].split(",");
   const data: CSVRow[] = [];
 
   for (let i = 1; i < lines.length; i++) {
@@ -16,7 +16,7 @@ function parseCSV(csvContent: string): CSVRow[] {
     if (!line) continue;
 
     const values: string[] = [];
-    let currentValue = '';
+    let currentValue = "";
     let inQuotes = false;
 
     for (let j = 0; j < line.length; j++) {
@@ -24,9 +24,9 @@ function parseCSV(csvContent: string): CSVRow[] {
 
       if (char === '"') {
         inQuotes = !inQuotes;
-      } else if (char === ',' && !inQuotes) {
+      } else if (char === "," && !inQuotes) {
         values.push(currentValue.trim());
-        currentValue = '';
+        currentValue = "";
       } else {
         currentValue += char;
       }
@@ -36,7 +36,7 @@ function parseCSV(csvContent: string): CSVRow[] {
     if (values.length >= headers.length) {
       const row: CSVRow = {};
       headers.forEach((header, index) => {
-        row[header.trim()] = values[index] || '';
+        row[header.trim()] = values[index] || "";
       });
       data.push(row);
     }
@@ -47,29 +47,32 @@ function parseCSV(csvContent: string): CSVRow[] {
 
 // TR_ID 정리 함수
 function cleanTrId(trId: string): string | null {
-  if (!trId || trId === '모의투자 미지원' || trId === '') {
+  if (!trId || trId === "모의투자 미지원" || trId === "") {
     return null;
   }
 
   // 괄호 안의 설명 제거하고 쉼표로 분리된 첫 번째 값만 사용
-  return trId.split(',')[0].replace(/\([^)]*\)/g, '').trim();
+  return trId
+    .split(",")[0]
+    .replace(/\([^)]*\)/g, "")
+    .trim();
 }
 
 // URL 정리 함수
 function cleanUrl(url: string): string {
-  return url.replace(/^\/uapi/, '').trim();
+  return url.replace(/^\/uapi/, "").trim();
 }
 
 // 카테고리 정리 함수
 function cleanCategory(category: string): string {
-  return category.replace(/[[\]]/g, '').trim();
+  return category.replace(/[[\]]/g, "").trim();
 }
 
 // 메인 처리 함수
 function generateTrIdMappings(): void {
   try {
-    const csvPath = path.join(process.cwd(), 'kis-api-table.csv');
-    const csvContent = fs.readFileSync(csvPath, 'utf-8');
+    const csvPath = path.join(process.cwd(), "kis-api-table.csv");
+    const csvContent = fs.readFileSync(csvPath, "utf-8");
     const data = parseCSV(csvContent);
 
     console.log(`총 ${data.length}개의 API 처리 중...`);
@@ -82,14 +85,14 @@ function generateTrIdMappings(): void {
     let totalCount = 0;
 
     data.forEach((row) => {
-      const url = cleanUrl(row['URL 명']);
-      const realTrId = cleanTrId(row['실전 TR_ID']);
-      const mockTrId = cleanTrId(row['모의 TR_ID']);
-      const apiName = row['API 명'];
-      const category = cleanCategory(row['메뉴 위치']);
-      const method = row['HTTP Method'];
+      const url = cleanUrl(row["URL 명"]);
+      const realTrId = cleanTrId(row["실전 TR_ID"]);
+      const mockTrId = cleanTrId(row["모의 TR_ID"]);
+      const apiName = row["API 명"];
+      const category = cleanCategory(row["메뉴 위치"]);
+      const method = row["HTTP Method"];
 
-      if (!url || url === '/hashkey') {
+      if (!url || url === "/hashkey") {
         return; // hashkey는 TR_ID가 필요 없음
       }
 
@@ -104,7 +107,7 @@ function generateTrIdMappings(): void {
           realCount++;
         }
 
-        if (mockTrId && mockTrId !== '모의투자 미지원') {
+        if (mockTrId && mockTrId !== "모의투자 미지원") {
           mappings[url].mock = mockTrId;
           mockCount++;
         }
@@ -114,7 +117,7 @@ function generateTrIdMappings(): void {
           name: apiName,
           category: category,
           method: method,
-          supportsMock: !!(mockTrId && mockTrId !== '모의투자 미지원')
+          supportsMock: !!(mockTrId && mockTrId !== "모의투자 미지원"),
         };
 
         // 카테고리별 분류
@@ -201,8 +204,8 @@ export const STATISTICS = {
 `;
 
     // 파일 저장
-    const outputPath = path.join(process.cwd(), 'package', 'utils', 'kis-tr-id-mappings.ts');
-    fs.writeFileSync(outputPath, tsContent, 'utf-8');
+    const outputPath = path.join(process.cwd(), "package", "utils", "kis-tr-id-mappings.ts");
+    fs.writeFileSync(outputPath, tsContent, "utf-8");
 
     console.log(`✅ TR_ID 매핑 파일 생성 완료: ${outputPath}`);
     console.log(`📊 통계:`);
@@ -210,10 +213,9 @@ export const STATISTICS = {
     console.log(`   - 실전투자 지원: ${realCount}`);
     console.log(`   - 모의투자 지원: ${mockCount}`);
     console.log(`   - 카테고리 수: ${Object.keys(categories).length}`);
-    console.log(`   - 모의투자 지원율: ${Math.round((mockCount/totalCount)*100)}%`);
-
+    console.log(`   - 모의투자 지원율: ${Math.round((mockCount / totalCount) * 100)}%`);
   } catch (error) {
-    console.error('❌ TR_ID 매핑 생성 실패:', error.message);
+    console.error("❌ TR_ID 매핑 생성 실패:", error.message);
   }
 }
 

@@ -1,10 +1,9 @@
-import { OpenAPIRegistry } from "@asteasolutions/zod-to-openapi";
+// Extend Zod with OpenAPI
+import { extendZodWithOpenApi, OpenAPIRegistry } from "@asteasolutions/zod-to-openapi";
 import express, { type Router } from "express";
 import { z } from "zod";
 import { createApiResponse, createDirectRequestBodySchema } from "@/api-docs/openAPIResponseBuilders";
 
-// Extend Zod with OpenAPI
-import { extendZodWithOpenApi } from "@asteasolutions/zod-to-openapi";
 extendZodWithOpenApi(z);
 
 export const oauthRegistry = new OpenAPIRegistry();
@@ -17,10 +16,7 @@ oauthRegistry.registerPath({
   tags: ["oauth"],
   summary: "Hashkey 생성",
   description: "API 호출 시 필요한 hashkey를 생성합니다",
-  security: [
-    { KoreaInvestmentAuth: [] },
-    { KoreaInvestmentSecret: [] }
-  ],
+  security: [{ KoreaInvestmentAuth: [] }, { KoreaInvestmentSecret: [] }],
   request: createDirectRequestBodySchema(
     oauthRegistry,
     "HashKeyRequest",
@@ -34,13 +30,13 @@ oauthRegistry.registerPath({
     z.object({
       HASH: z.string().describe("생성된 해시키"),
     }),
-    "해시키 생성 성공"
+    "해시키 생성 성공",
   ),
 });
 
 // 2. 접근토큰 발급
 oauthRegistry.registerPath({
-  method: "post", 
+  method: "post",
   path: "/oauth2/tokenP",
   tags: ["oauth"],
   summary: "접근토큰 발급(P)",
@@ -63,14 +59,14 @@ oauthRegistry.registerPath({
       token_type: z.string().describe("토큰 타입"),
       expires_in: z.number().describe("토큰 유효시간(초)"),
     }),
-    "토큰 발급 성공"
+    "토큰 발급 성공",
   ),
 });
 
-// 3. 접근토큰 폐기  
+// 3. 접근토큰 폐기
 oauthRegistry.registerPath({
   method: "post",
-  path: "/oauth2/revokeP", 
+  path: "/oauth2/revokeP",
   tags: ["oauth"],
   summary: "접근토큰 폐기(P)",
   description: "발급받은 접근토큰을 폐기합니다",
@@ -88,7 +84,7 @@ oauthRegistry.registerPath({
       code: z.string().describe("응답 코드"),
       message: z.string().describe("응답 메시지"),
     }),
-    "토큰 폐기 성공"
+    "토큰 폐기 성공",
   ),
 });
 
@@ -114,6 +110,6 @@ oauthRegistry.registerPath({
     z.object({
       approval_key: z.string().describe("웹소켓 접속 승인키"),
     }),
-    "웹소켓 접속키 발급 성공"
+    "웹소켓 접속키 발급 성공",
   ),
 });

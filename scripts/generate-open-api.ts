@@ -21,10 +21,10 @@ console.log(`📄 Total endpoints: ${Object.keys(openAPIDocument.paths || {}).le
 
 // Print endpoint summary
 if (openAPIDocument.paths) {
-	console.log("\n📋 Endpoints:");
-	Object.entries(openAPIDocument.paths).forEach(([path, methods]) => {
-		Object.keys(methods).forEach((method) => {
-			console.log(`  ${method.toUpperCase().padEnd(7)} ${path}`);
-		});
-	});
+  console.log("\n📋 Endpoints:");
+  Object.entries(openAPIDocument.paths).forEach(([path, methods]) => {
+    Object.keys(methods).forEach((method) => {
+      console.log(`  ${method.toUpperCase().padEnd(7)} ${path}`);
+    });
+  });
 }
