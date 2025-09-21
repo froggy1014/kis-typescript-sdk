@@ -429,7 +429,7 @@ const OvertimePriceResponseSchema = z.object({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/inquire-price",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 시세",
 	description: `국내주식의 현재가 시세 정보를 조회합니다
 
@@ -459,7 +459,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/inquire-price-2",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 시세2",
 	description: "주식의 추가 시세 정보를 조회합니다 (TR_ID: FHPST01010000)",
 	security: [{ bearerAuth: [] }],
@@ -487,7 +487,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/inquire-ccnl",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 체결",
 	description: "주식의 체결 내역 정보를 조회합니다 (TR_ID: FHKST01010300)",
 	security: [{ bearerAuth: [] }],
@@ -515,7 +515,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/inquire-daily-price",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 일자별",
 	description: "주식의 일자별 시세 정보를 조회합니다 (TR_ID: FHKST01010400)",
 	security: [{ bearerAuth: [] }],
@@ -545,7 +545,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/inquire-asking-price-exp-ccn",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 호가/예상체결",
 	description: "주식의 호가 정보와 예상체결 정보를 조회합니다 (TR_ID: FHKST01010200)",
 	security: [{ bearerAuth: [] }],
@@ -573,7 +573,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/inquire-investor",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 투자자",
 	description: "주식의 투자자별 매매 동향을 조회합니다 (TR_ID: FHKST01010900)",
 	security: [{ bearerAuth: [] }],
@@ -601,7 +601,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/inquire-member",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 회원사",
 	description: "주식의 회원사별 매매 동향을 조회합니다 (TR_ID: FHKST01010600)",
 	security: [{ bearerAuth: [] }],
@@ -629,7 +629,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/inquire-daily-itemchartprice",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "국내주식기간별시세(일/주/월/년)",
 	description: "주식의 기간별 차트 데이터를 조회합니다 (TR_ID: FHKST03010100)",
 	security: [{ bearerAuth: [] }],
@@ -661,7 +661,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/inquire-time-itemchartprice",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "주식당일분봉조회",
 	description: "주식의 당일 분봉 차트 데이터를 조회합니다 (TR_ID: FHKST03010200)",
 	security: [{ bearerAuth: [] }],
@@ -691,7 +691,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/inquire-time-itemconclusion",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 당일시간대별체결",
 	description: "주식의 시간대별 체결 내역을 조회합니다 (TR_ID: FHPST01060000)",
 	security: [{ bearerAuth: [] }],
@@ -721,7 +721,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/inquire-overtime-price",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "국내주식 시간외현재가",
 	description: "주식의 시간외 현재가 정보를 조회합니다 (TR_ID: FHPST02300000)",
 	security: [{ bearerAuth: [] }],
@@ -1000,7 +1000,7 @@ const ExpectedClosingPriceResponseSchema = z.object({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/etfetn/v1/quotations/inquire-component-stock-price",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "ETF 구성종목시세",
 	description: "ETF의 구성종목 시세 정보를 조회합니다 (TR_ID: FHKST121600C0)",
 	security: [{ bearerAuth: [] }],
@@ -1029,7 +1029,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/etfetn/v1/quotations/nav-comparison-trend",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "NAV 비교추이(종목)",
 	description: "ETF/ETN의 NAV 비교추이를 종목별로 조회합니다 (TR_ID: FHPST02440000)",
 	security: [{ bearerAuth: [] }],
@@ -1059,7 +1059,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/inquire-daily-overtimeprice",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "주식현재가 시간외일자별주가",
 	description: "주식의 시간외 일자별 주가 정보를 조회합니다 (TR_ID: FHPST02320000)",
 	security: [{ bearerAuth: [] }],
@@ -1087,7 +1087,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/inquire-overtime-asking-price",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "국내주식 시간외호가",
 	description: "주식의 시간외 호가 정보를 조회합니다 (TR_ID: FHPST02300400)",
 	security: [{ bearerAuth: [] }],
@@ -1115,7 +1115,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/inquire-time-dailychartprice",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "주식일별분봉조회",
 	description: "주식의 일별 분봉 차트 데이터를 조회합니다 (TR_ID: FHKST03010230)",
 	security: [{ bearerAuth: [] }],
@@ -1146,7 +1146,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/etfetn/v1/quotations/nav-comparison-daily-trend",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "NAV 비교추이(일)",
 	description: "ETF/ETN의 NAV 비교추이를 일별로 조회합니다 (TR_ID: FHPST02440200)",
 	security: [{ bearerAuth: [] }],
@@ -1176,7 +1176,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/etfetn/v1/quotations/nav-comparison-time-trend",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "NAV 비교추이(분)",
 	description: "ETF/ETN의 NAV 비교추이를 분별로 조회합니다 (TR_ID: FHPST02440100)",
 	security: [{ bearerAuth: [] }],
@@ -1207,7 +1207,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/etfetn/v1/quotations/inquire-price",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "ETF/ETN 현재가",
 	description: "ETF/ETN의 현재가 정보를 조회합니다 (TR_ID: FHPST02400000)",
 	security: [{ bearerAuth: [] }],
@@ -1235,7 +1235,7 @@ domesticQuotationsRegistry.registerPath({
 domesticQuotationsRegistry.registerPath({
 	method: "get",
 	path: "/uapi/domestic-stock/v1/quotations/exp-closing-price",
-	tags: ["국내주식 기본시세"],
+	tags: ["domestic-stock-quotations"],
 	summary: "국내주식 장마감 예상체결가",
 	description: "국내주식의 장마감 예상체결가를 조회합니다 (TR_ID: FHKST117300C0)",
 	security: [{ bearerAuth: [] }],

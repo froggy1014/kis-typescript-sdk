@@ -1,75 +1,73 @@
-import { OpenAPIRegistry, OpenApiGeneratorV3 } from "@asteasolutions/zod-to-openapi";
+import { OpenAPIRegistry, OpenApiGeneratorV31 } from "@asteasolutions/zod-to-openapi";
+import { domesticQuotationsRegistry } from "../api/domestic-stock/quotationsRouter";
+import { oauthRegistry } from "../api/oauth/oauthRouter";
 
-import { oauthRegistry } from "@/api/oauth/oauthRouter";
-import { domesticQuotationsRegistry } from "@/api/domestic-stock/quotationsRouter";
-import { domesticTradingRegistry } from "@/api/domestic-stock/tradingRouter";
-import { domesticElwRegistry } from "@/api/domestic-stock/elwRouter";
-import { domesticSectorRegistry } from "@/api/domestic-stock/sectorRouter";
-import { domesticStockInfoRegistry } from "@/api/domestic-stock/stockInfoRouter";
-import { marketAnalysisRegistry } from "@/api/domestic-stock/marketAnalysisRouter";
-import { websocketRegistry } from "@/api/websocket/websocketRouter";
-import { futuresOptionsRegistry } from "@/api/futures-options/futuresOptionsRouter";
+export function generateOpenAPIDocument(): any {
+	// Create main registry and merge all registries
+	const registry = new OpenAPIRegistry();
 
-export type OpenAPIDocument = ReturnType<OpenApiGeneratorV3["generateDocument"]>;
+	// Merge all registries
+	const registries = [
+		domesticQuotationsRegistry,
+		oauthRegistry,
+	];
 
-export function generateOpenAPIDocument(): OpenAPIDocument {
-	const registry = new OpenAPIRegistry([oauthRegistry, domesticQuotationsRegistry, domesticTradingRegistry, domesticElwRegistry, domesticSectorRegistry, domesticStockInfoRegistry, marketAnalysisRegistry, websocketRegistry, futuresOptionsRegistry]);
-	
-	// Register Bearer authentication security scheme
-	registry.registerComponent("securitySchemes", "bearerAuth", {
-		type: "http",
-		scheme: "bearer",
-		description: "Korea Investment Securities access token을 입력하세요",
+	registries.forEach((subRegistry) => {
+		// @ts-ignore - accessing private property for merging
+		if (subRegistry._definitions) {
+			// @ts-ignore
+			registry._definitions = [...registry._definitions, ...subRegistry._definitions];
+		}
 	});
 
-	const generator = new OpenApiGeneratorV3(registry.definitions);
+	// Generate OpenAPI document
+	const generator = new OpenApiGeneratorV31(registry.definitions);
 
-	return generator.generateDocument({
-		openapi: "3.0.0",
+	const document = generator.generateDocument({
+		openapi: "3.1.0",
 		info: {
+			title: "Korea Investment API",
 			version: "1.0.0",
-			title: "Korea Investment Securities API",
-			description: `한국투자증권 API를 위한 TypeScript REST API 명세서
-
-## 🚀 서버 환경
-
-### 실전 도메인
-- **REST API**: https://openapi.koreainvestment.com:9443
-- **WebSocket**: ws://ops.koreainvestment.com:21000
-
-### 모의투자 도메인  
-- **REST API**: https://openapivts.koreainvestment.com:29443
-- **WebSocket**: ws://ops.koreainvestment.com:31000
-
-## 🔑 인증 방법
-
-1. **앱키/시크릿 발급**: [KIS 개발자센터](https://apiportal.koreainvestment.com)에서 발급
-2. **토큰 발급**: \`POST /oauth2/tokenP\` 호출하여 access_token 획득
-3. **API 호출**: Authorization 헤더에 \`Bearer {access_token}\` 설정
-
-## 📋 TR_ID 구분
-
-- **실전**: TTTC0012U (매수), TTTC0011U (매도)
-- **모의**: VTTC0012U (매수), VTTC0011U (매도)`,
+			description: "한국투자증권 OpenAPI TypeScript Implementation",
 		},
 		servers: [
 			{
+				url: "http://localhost:8080",
+				description: "Development server",
+			},
+			{
 				url: "https://openapi.koreainvestment.com:9443",
-				description: "실전 서버 (Production)",
+				description: "Production server",
 			},
 			{
-				url: "https://openapivts.koreainvestment.com:29443", 
-				description: "모의투자 서버 (Virtual Trading)",
+				url: "https://openapivts.koreainvestment.com:29443",
+				description: "Virtual trading server",
 			},
 		],
-		security: [
+		tags: [
 			{
-				bearerAuth: [],
+				name: "oauth",
+				description: "OAuth 2.0 Authentication APIs",
+			},
+			{
+				name: "domestic-stock-quotations",
+				description: "Domestic Stock Quotation APIs",
 			},
 		],
-		externalDocs: {
-			description: "View the raw OpenAPI Specification in JSON format",
-			url: "/swagger.json",
-		},
 	});
+
+	// Add security schemes after generating the document
+	document.components = {
+		...document.components,
+		securitySchemes: {
+			bearerAuth: {
+				type: "http",
+				scheme: "bearer",
+				bearerFormat: "JWT",
+				description: "한국투자증권 OAuth 2.0 접근토큰",
+			},
+		},
+	};
+
+	return document;
 }

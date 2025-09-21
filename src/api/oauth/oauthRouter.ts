@@ -14,7 +14,7 @@ export const oauthRouter: Router = express.Router();
 oauthRegistry.registerPath({
   method: "post",
   path: "/uapi/hashkey",
-  tags: ["OAuth 인증"],
+  tags: ["oauth"],
   summary: "Hashkey 생성",
   description: "API 호출 시 필요한 hashkey를 생성합니다",
   request: {
@@ -32,16 +32,21 @@ oauthRegistry.registerPath({
       appsecret: z.string().describe("앱시크릿"),
     }),
   },
-  responses: createApiResponse(z.object({
-    HASH: z.string().describe("생성된 해시키"),
-  }), "해시키 생성 성공"),
+  responses: createApiResponse(
+    oauthRegistry,
+    "HashKeyResponse",
+    z.object({
+      HASH: z.string().describe("생성된 해시키"),
+    }),
+    "해시키 생성 성공"
+  ),
 });
 
 // 2. 접근토큰 발급
 oauthRegistry.registerPath({
   method: "post", 
   path: "/oauth2/tokenP",
-  tags: ["OAuth 인증"],
+  tags: ["oauth"],
   summary: "접근토큰 발급(P)",
   description: "한국투자증권 API 접근을 위한 토큰을 발급받습니다",
   request: {
@@ -57,19 +62,24 @@ oauthRegistry.registerPath({
       },
     },
   },
-  responses: createApiResponse(z.object({
-    access_token: z.string().describe("액세스 토큰"),
-    access_token_token_expired: z.string().describe("토큰 만료 시각"),
-    token_type: z.string().describe("토큰 타입"),
-    expires_in: z.number().describe("토큰 유효시간(초)"),
-  }), "토큰 발급 성공"),
+  responses: createApiResponse(
+    oauthRegistry,
+    "TokenResponse",
+    z.object({
+      access_token: z.string().describe("액세스 토큰"),
+      access_token_token_expired: z.string().describe("토큰 만료 시각"),
+      token_type: z.string().describe("토큰 타입"),
+      expires_in: z.number().describe("토큰 유효시간(초)"),
+    }),
+    "토큰 발급 성공"
+  ),
 });
 
 // 3. 접근토큰 폐기  
 oauthRegistry.registerPath({
   method: "post",
   path: "/oauth2/revokeP", 
-  tags: ["OAuth 인증"],
+  tags: ["oauth"],
   summary: "접근토큰 폐기(P)",
   description: "발급받은 접근토큰을 폐기합니다",
   request: {
@@ -85,17 +95,22 @@ oauthRegistry.registerPath({
       },
     },
   },
-  responses: createApiResponse(z.object({
-    code: z.string().describe("응답 코드"),
-    message: z.string().describe("응답 메시지"),
-  }), "토큰 폐기 성공"),
+  responses: createApiResponse(
+    oauthRegistry,
+    "RevokeResponse",
+    z.object({
+      code: z.string().describe("응답 코드"),
+      message: z.string().describe("응답 메시지"),
+    }),
+    "토큰 폐기 성공"
+  ),
 });
 
 // 4. 웹소켓 접속키 발급
 oauthRegistry.registerPath({
   method: "post",
   path: "/oauth2/Approval",
-  tags: ["OAuth 인증"],
+  tags: ["oauth"],
   summary: "실시간 (웹소켓) 접속키 발급",
   description: "웹소켓 실시간 시세를 위한 접속키를 발급받습니다",
   security: [{ bearerAuth: [] }],
@@ -112,7 +127,12 @@ oauthRegistry.registerPath({
       },
     },
   },
-  responses: createApiResponse(z.object({
-    approval_key: z.string().describe("웹소켓 접속 승인키"),
-  }), "웹소켓 접속키 발급 성공"),
+  responses: createApiResponse(
+    oauthRegistry,
+    "ApprovalKeyResponse",
+    z.object({
+      approval_key: z.string().describe("웹소켓 접속 승인키"),
+    }),
+    "웹소켓 접속키 발급 성공"
+  ),
 });
