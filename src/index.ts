@@ -3,6 +3,7 @@ import express, { type Express } from "express";
 import helmet from "helmet";
 
 import { openAPIRouter } from "@/api-docs/openAPIRouter";
+import { generateOpenAPIDocument } from "@/api-docs/openAPIDocumentGenerator";
 import { domesticQuotationsRouter } from "@/api/domestic-stock/quotationsRouter";
 import { oauthRouter } from "@/api/oauth/oauthRouter";
 
@@ -27,6 +28,12 @@ app.use("/uapi/domestic-stock", domesticQuotationsRouter);
 
 // Swagger documentation
 app.use("/swagger", openAPIRouter);
+
+// Export OpenAPI spec at /swagger.json
+app.get("/swagger.json", (_req, res) => {
+	const openAPIDocument = generateOpenAPIDocument();
+	res.json(openAPIDocument);
+});
 
 // Root redirect to Swagger
 app.get("/", (_req, res) => {
