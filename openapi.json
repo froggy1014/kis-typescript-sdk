@@ -31,28 +31,6 @@
   ],
   "components": {
     "schemas": {
-      "StockCurrentPriceRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드 (J: 주식)"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 6,
-            "description": "종목코드 (6자리, 예: 005930)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD"
-        ]
-      },
       "StockCurrentPriceResponse": {
         "type": "object",
         "properties": {
@@ -167,28 +145,6 @@
           "msg_cd",
           "msg1",
           "output"
-        ]
-      },
-      "DetailedPriceRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 6,
-            "description": "종목코드 (6자리)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD"
         ]
       },
       "DetailedPriceResponse": {
@@ -562,28 +518,6 @@
           "output"
         ]
       },
-      "TransactionRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 6,
-            "description": "종목코드 (6자리)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD"
-        ]
-      },
       "TransactionResponse": {
         "type": "object",
         "properties": {
@@ -651,47 +585,6 @@
           "msg_cd",
           "msg1",
           "output"
-        ]
-      },
-      "DailyPriceRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 6,
-            "description": "종목코드 (6자리)"
-          },
-          "FID_PERIOD_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "D",
-              "W",
-              "M"
-            ],
-            "default": "D",
-            "description": "기간분류코드 (D:일봉, W:주봉, M:월봉)"
-          },
-          "FID_ORG_ADJ_PRC": {
-            "type": "string",
-            "enum": [
-              "0",
-              "1"
-            ],
-            "default": "0",
-            "description": "수정주가 여부 (0:수정안함, 1:수정함)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD"
         ]
       },
       "DailyPriceResponse": {
@@ -791,28 +684,6 @@
           "msg_cd",
           "msg1",
           "output"
-        ]
-      },
-      "AskingPriceExpectedRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 6,
-            "description": "종목코드 (6자리)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD"
         ]
       },
       "AskingPriceExpectedResponse": {
@@ -950,28 +821,6 @@
           "output2"
         ]
       },
-      "InvestorRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 6,
-            "description": "종목코드 (6자리)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD"
-        ]
-      },
       "InvestorResponse": {
         "type": "object",
         "properties": {
@@ -1058,28 +907,6 @@
           "output"
         ]
       },
-      "MemberRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 6,
-            "description": "종목코드 (6자리)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD"
-        ]
-      },
       "MemberResponse": {
         "type": "object",
         "properties": {
@@ -1147,58 +974,6 @@
           "msg_cd",
           "msg1",
           "output"
-        ]
-      },
-      "PeriodChartRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 6,
-            "description": "종목코드 (6자리)"
-          },
-          "FID_INPUT_DATE_1": {
-            "type": "string",
-            "description": "시작일자 (YYYYMMDD)"
-          },
-          "FID_INPUT_DATE_2": {
-            "type": "string",
-            "description": "종료일자 (YYYYMMDD)"
-          },
-          "FID_PERIOD_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "D",
-              "W",
-              "M",
-              "Y"
-            ],
-            "description": "기간분류코드 (D:일봉, W:주봉, M:월봉, Y:년봉)"
-          },
-          "FID_ORG_ADJ_PRC": {
-            "type": "string",
-            "enum": [
-              "0",
-              "1"
-            ],
-            "default": "0",
-            "description": "수정죽가 여부 (0:수정안함, 1:수정함)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD",
-          "FID_INPUT_DATE_1",
-          "FID_INPUT_DATE_2",
-          "FID_PERIOD_DIV_CODE"
         ]
       },
       "PeriodChartResponse": {
@@ -1359,42 +1134,6 @@
           "output2"
         ]
       },
-      "IntradayChartRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 6,
-            "description": "종목코드 (6자리)"
-          },
-          "FID_INPUT_HOUR_1": {
-            "type": "string",
-            "description": "시작시간 (HHMMSS)"
-          },
-          "FID_PW_DATA_INCU_YN": {
-            "type": "string",
-            "enum": [
-              "Y",
-              "N"
-            ],
-            "default": "Y",
-            "description": "과거 데이터 포함 여부"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD",
-          "FID_INPUT_HOUR_1"
-        ]
-      },
       "IntradayChartResponse": {
         "type": "object",
         "properties": {
@@ -1523,38 +1262,6 @@
           "output2"
         ]
       },
-      "TimeTransactionRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 6,
-            "description": "종목코드 (6자리)"
-          },
-          "FID_INPUT_HOUR_1": {
-            "type": "string",
-            "description": "시작시간 (HHMMSS)"
-          },
-          "FID_INPUT_HOUR_2": {
-            "type": "string",
-            "description": "종료시간 (HHMMSS)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD",
-          "FID_INPUT_HOUR_1",
-          "FID_INPUT_HOUR_2"
-        ]
-      },
       "TimeTransactionResponse": {
         "type": "object",
         "properties": {
@@ -1622,28 +1329,6 @@
           "msg_cd",
           "msg1",
           "output"
-        ]
-      },
-      "OvertimePriceRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 6,
-            "description": "종목코드 (6자리)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD"
         ]
       },
       "OvertimePriceResponse": {
@@ -2082,33 +1767,6 @@
           "output"
         ]
       },
-      "ETFComponentStockRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 12,
-            "description": "종목코드"
-          },
-          "FID_COND_SCR_DIV_CODE": {
-            "type": "string",
-            "default": "11216",
-            "description": "조건화면분류코드"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD"
-        ]
-      },
       "ETFComponentStockResponse": {
         "type": "object",
         "properties": {
@@ -2232,38 +1890,6 @@
           "output2"
         ]
       },
-      "NAVComparisonTrendRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 12,
-            "description": "종목코드"
-          },
-          "FID_INPUT_DATE_1": {
-            "type": "string",
-            "description": "시작일자 (YYYYMMDD)"
-          },
-          "FID_INPUT_DATE_2": {
-            "type": "string",
-            "description": "종료일자 (YYYYMMDD)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD",
-          "FID_INPUT_DATE_1",
-          "FID_INPUT_DATE_2"
-        ]
-      },
       "NAVComparisonTrendResponse": {
         "type": "object",
         "properties": {
@@ -2346,28 +1972,6 @@
           "msg_cd",
           "msg1",
           "output"
-        ]
-      },
-      "OvertimeDailyPriceRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 12,
-            "description": "종목코드"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD"
         ]
       },
       "OvertimeDailyPriceResponse": {
@@ -2471,28 +2075,6 @@
           "msg1",
           "output1",
           "output2"
-        ]
-      },
-      "OvertimeAskingPriceRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 6,
-            "description": "종목코드 (6자리)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD"
         ]
       },
       "OvertimeAskingPriceResponse": {
@@ -2636,55 +2218,6 @@
           "output"
         ]
       },
-      "DailyChartRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 6,
-            "description": "종목코드 (6자리)"
-          },
-          "FID_INPUT_DATE_1": {
-            "type": "string",
-            "description": "시작일자 (YYYYMMDD)"
-          },
-          "FID_PERIOD_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "1",
-              "5",
-              "10",
-              "15",
-              "30",
-              "60"
-            ],
-            "description": "분 간격 (1,5,10,15,30,60)"
-          },
-          "FID_ORG_ADJ_PRC": {
-            "type": "string",
-            "enum": [
-              "0",
-              "1"
-            ],
-            "default": "0",
-            "description": "수정주가 여부 (0:수정안함, 1:수정함)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD",
-          "FID_INPUT_DATE_1",
-          "FID_PERIOD_DIV_CODE"
-        ]
-      },
       "DailyChartResponse": {
         "type": "object",
         "properties": {
@@ -2813,38 +2346,6 @@
           "output2"
         ]
       },
-      "NAVComparisonDailyTrendRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 12,
-            "description": "종목코드"
-          },
-          "FID_INPUT_DATE_1": {
-            "type": "string",
-            "description": "시작일자 (YYYYMMDD)"
-          },
-          "FID_INPUT_DATE_2": {
-            "type": "string",
-            "description": "종료일자 (YYYYMMDD)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD",
-          "FID_INPUT_DATE_1",
-          "FID_INPUT_DATE_2"
-        ]
-      },
       "NAVComparisonDailyTrendResponse": {
         "type": "object",
         "properties": {
@@ -2924,43 +2425,6 @@
           "output"
         ]
       },
-      "NAVComparisonTimeTrendRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 12,
-            "description": "종목코드"
-          },
-          "FID_INPUT_DATE_1": {
-            "type": "string",
-            "description": "조회일자 (YYYYMMDD)"
-          },
-          "FID_INPUT_HOUR_1": {
-            "type": "string",
-            "description": "시작시간 (HHMMSS)"
-          },
-          "FID_INPUT_HOUR_2": {
-            "type": "string",
-            "description": "종료시간 (HHMMSS)"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD",
-          "FID_INPUT_DATE_1",
-          "FID_INPUT_HOUR_1",
-          "FID_INPUT_HOUR_2"
-        ]
-      },
       "NAVComparisonTimeTrendResponse": {
         "type": "object",
         "properties": {
@@ -3038,28 +2502,6 @@
           "msg_cd",
           "msg1",
           "output"
-        ]
-      },
-      "ETFETNCurrentPriceRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 12,
-            "description": "종목코드"
-          }
-        },
-        "required": [
-          "FID_INPUT_ISCD"
         ]
       },
       "ETFETNCurrentPriceResponse": {
@@ -3197,46 +2639,6 @@
           "msg1",
           "output"
         ]
-      },
-      "ExpectedClosingPriceRequest": {
-        "type": "object",
-        "properties": {
-          "FID_COND_MRKT_DIV_CODE": {
-            "type": "string",
-            "enum": [
-              "J"
-            ],
-            "default": "J",
-            "description": "조건 시장 분류 코드"
-          },
-          "FID_COND_SCR_DIV_CODE": {
-            "type": "string",
-            "default": "20171",
-            "description": "조건화면분류코드"
-          },
-          "FID_INPUT_ISCD": {
-            "type": "string",
-            "description": "종목코드 (전체조회시 생략)"
-          },
-          "FID_DIV_CLS_CODE": {
-            "type": "string",
-            "enum": [
-              "0",
-              "1"
-            ],
-            "default": "0",
-            "description": "분류구분코드 (0:전체, 1:특정종목)"
-          },
-          "FID_RANK_SORT_CLS_CODE": {
-            "type": "string",
-            "enum": [
-              "0",
-              "1"
-            ],
-            "default": "0",
-            "description": "순위정렬구분코드 (0:상승률순, 1:하락률순)"
-          }
-        }
       },
       "ExpectedClosingPriceResponse": {
         "type": "object",
@@ -3520,15 +2922,30 @@
         ],
         "parameters": [
           {
-            "name": "stockcurrentpricerequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/StockCurrentPriceRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드 (J: 주식)"
             },
-            "description": "StockCurrentPriceRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드 (J: 주식)",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "description": "종목코드 (6자리, 예: 005930)"
+            },
+            "required": true,
+            "description": "종목코드 (6자리, 예: 005930)",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
           }
         ],
         "responses": {
@@ -3568,15 +2985,30 @@
         ],
         "parameters": [
           {
-            "name": "stockcurrentpricerequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/StockCurrentPriceRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "StockCurrentPriceRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "description": "종목코드 (6자리)"
+            },
+            "required": true,
+            "description": "종목코드 (6자리)",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
           }
         ],
         "responses": {
@@ -3616,15 +3048,30 @@
         ],
         "parameters": [
           {
-            "name": "stockcurrentpricerequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/StockCurrentPriceRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "StockCurrentPriceRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "description": "종목코드 (6자리)"
+            },
+            "required": true,
+            "description": "종목코드 (6자리)",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
           }
         ],
         "responses": {
@@ -3664,15 +3111,61 @@
         ],
         "parameters": [
           {
-            "name": "dailypricerequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/DailyPriceRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "DailyPriceRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "description": "종목코드 (6자리)"
+            },
+            "required": true,
+            "description": "종목코드 (6자리)",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "D",
+                "W",
+                "M"
+              ],
+              "default": "D",
+              "description": "기간분류코드 (D:일봉, W:주봉, M:월봉)"
+            },
+            "required": false,
+            "description": "기간분류코드 (D:일봉, W:주봉, M:월봉)",
+            "name": "FID_PERIOD_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "0",
+                "1"
+              ],
+              "default": "0",
+              "description": "수정주가 여부 (0:수정안함, 1:수정함)"
+            },
+            "required": false,
+            "description": "수정주가 여부 (0:수정안함, 1:수정함)",
+            "name": "FID_ORG_ADJ_PRC",
+            "in": "query"
           }
         ],
         "responses": {
@@ -3712,15 +3205,30 @@
         ],
         "parameters": [
           {
-            "name": "stockcurrentpricerequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/StockCurrentPriceRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "StockCurrentPriceRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "description": "종목코드 (6자리)"
+            },
+            "required": true,
+            "description": "종목코드 (6자리)",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
           }
         ],
         "responses": {
@@ -3760,15 +3268,30 @@
         ],
         "parameters": [
           {
-            "name": "stockcurrentpricerequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/StockCurrentPriceRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "StockCurrentPriceRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "description": "종목코드 (6자리)"
+            },
+            "required": true,
+            "description": "종목코드 (6자리)",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
           }
         ],
         "responses": {
@@ -3808,15 +3331,30 @@
         ],
         "parameters": [
           {
-            "name": "stockcurrentpricerequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/StockCurrentPriceRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "StockCurrentPriceRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "description": "종목코드 (6자리)"
+            },
+            "required": true,
+            "description": "종목코드 (6자리)",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
           }
         ],
         "responses": {
@@ -3856,15 +3394,81 @@
         ],
         "parameters": [
           {
-            "name": "periodchartrequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/PeriodChartRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "PeriodChartRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "description": "종목코드 (6자리)"
+            },
+            "required": true,
+            "description": "종목코드 (6자리)",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "시작일자 (YYYYMMDD)"
+            },
+            "required": true,
+            "description": "시작일자 (YYYYMMDD)",
+            "name": "FID_INPUT_DATE_1",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "종료일자 (YYYYMMDD)"
+            },
+            "required": true,
+            "description": "종료일자 (YYYYMMDD)",
+            "name": "FID_INPUT_DATE_2",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "D",
+                "W",
+                "M",
+                "Y"
+              ],
+              "description": "기간분류코드 (D:일봉, W:주봉, M:월봉, Y:년봉)"
+            },
+            "required": true,
+            "description": "기간분류코드 (D:일봉, W:주봉, M:월봉, Y:년봉)",
+            "name": "FID_PERIOD_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "0",
+                "1"
+              ],
+              "default": "0",
+              "description": "수정죽가 여부 (0:수정안함, 1:수정함)"
+            },
+            "required": false,
+            "description": "수정죽가 여부 (0:수정안함, 1:수정함)",
+            "name": "FID_ORG_ADJ_PRC",
+            "in": "query"
           }
         ],
         "responses": {
@@ -3904,15 +3508,55 @@
         ],
         "parameters": [
           {
-            "name": "intradaychartrequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/IntradayChartRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "IntradayChartRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "description": "종목코드 (6자리)"
+            },
+            "required": true,
+            "description": "종목코드 (6자리)",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "시작시간 (HHMMSS)"
+            },
+            "required": true,
+            "description": "시작시간 (HHMMSS)",
+            "name": "FID_INPUT_HOUR_1",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Y",
+                "N"
+              ],
+              "default": "Y",
+              "description": "과거 데이터 포함 여부"
+            },
+            "required": false,
+            "description": "과거 데이터 포함 여부",
+            "name": "FID_PW_DATA_INCU_YN",
+            "in": "query"
           }
         ],
         "responses": {
@@ -3952,15 +3596,50 @@
         ],
         "parameters": [
           {
-            "name": "timetransactionrequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/TimeTransactionRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "TimeTransactionRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "description": "종목코드 (6자리)"
+            },
+            "required": true,
+            "description": "종목코드 (6자리)",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "시작시간 (HHMMSS)"
+            },
+            "required": true,
+            "description": "시작시간 (HHMMSS)",
+            "name": "FID_INPUT_HOUR_1",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "종료시간 (HHMMSS)"
+            },
+            "required": true,
+            "description": "종료시간 (HHMMSS)",
+            "name": "FID_INPUT_HOUR_2",
+            "in": "query"
           }
         ],
         "responses": {
@@ -4000,15 +3679,30 @@
         ],
         "parameters": [
           {
-            "name": "stockcurrentpricerequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/StockCurrentPriceRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "StockCurrentPriceRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "description": "종목코드 (6자리)"
+            },
+            "required": true,
+            "description": "종목코드 (6자리)",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
           }
         ],
         "responses": {
@@ -4048,15 +3742,41 @@
         ],
         "parameters": [
           {
-            "name": "etfcomponentstockrequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/ETFComponentStockRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "ETFComponentStockRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 12,
+              "description": "종목코드"
+            },
+            "required": true,
+            "description": "종목코드",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "default": "11216",
+              "description": "조건화면분류코드"
+            },
+            "required": false,
+            "description": "조건화면분류코드",
+            "name": "FID_COND_SCR_DIV_CODE",
+            "in": "query"
           }
         ],
         "responses": {
@@ -4096,15 +3816,50 @@
         ],
         "parameters": [
           {
-            "name": "navcomparisontrendrequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/NAVComparisonTrendRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "NAVComparisonTrendRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 12,
+              "description": "종목코드"
+            },
+            "required": true,
+            "description": "종목코드",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "시작일자 (YYYYMMDD)"
+            },
+            "required": true,
+            "description": "시작일자 (YYYYMMDD)",
+            "name": "FID_INPUT_DATE_1",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "종료일자 (YYYYMMDD)"
+            },
+            "required": true,
+            "description": "종료일자 (YYYYMMDD)",
+            "name": "FID_INPUT_DATE_2",
+            "in": "query"
           }
         ],
         "responses": {
@@ -4144,15 +3899,30 @@
         ],
         "parameters": [
           {
-            "name": "stockcurrentpricerequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/StockCurrentPriceRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "StockCurrentPriceRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 12,
+              "description": "종목코드"
+            },
+            "required": true,
+            "description": "종목코드",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
           }
         ],
         "responses": {
@@ -4192,15 +3962,30 @@
         ],
         "parameters": [
           {
-            "name": "stockcurrentpricerequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/StockCurrentPriceRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "StockCurrentPriceRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "description": "종목코드 (6자리)"
+            },
+            "required": true,
+            "description": "종목코드 (6자리)",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
           }
         ],
         "responses": {
@@ -4240,15 +4025,73 @@
         ],
         "parameters": [
           {
-            "name": "dailychartrequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/DailyChartRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "DailyChartRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "description": "종목코드 (6자리)"
+            },
+            "required": true,
+            "description": "종목코드 (6자리)",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "시작일자 (YYYYMMDD)"
+            },
+            "required": true,
+            "description": "시작일자 (YYYYMMDD)",
+            "name": "FID_INPUT_DATE_1",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "1",
+                "5",
+                "10",
+                "15",
+                "30",
+                "60"
+              ],
+              "description": "분 간격 (1,5,10,15,30,60)"
+            },
+            "required": true,
+            "description": "분 간격 (1,5,10,15,30,60)",
+            "name": "FID_PERIOD_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "0",
+                "1"
+              ],
+              "default": "0",
+              "description": "수정주가 여부 (0:수정안함, 1:수정함)"
+            },
+            "required": false,
+            "description": "수정주가 여부 (0:수정안함, 1:수정함)",
+            "name": "FID_ORG_ADJ_PRC",
+            "in": "query"
           }
         ],
         "responses": {
@@ -4288,15 +4131,50 @@
         ],
         "parameters": [
           {
-            "name": "navcomparisontrendrequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/NAVComparisonTrendRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "NAVComparisonTrendRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 12,
+              "description": "종목코드"
+            },
+            "required": true,
+            "description": "종목코드",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "시작일자 (YYYYMMDD)"
+            },
+            "required": true,
+            "description": "시작일자 (YYYYMMDD)",
+            "name": "FID_INPUT_DATE_1",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "종료일자 (YYYYMMDD)"
+            },
+            "required": true,
+            "description": "종료일자 (YYYYMMDD)",
+            "name": "FID_INPUT_DATE_2",
+            "in": "query"
           }
         ],
         "responses": {
@@ -4336,15 +4214,60 @@
         ],
         "parameters": [
           {
-            "name": "navcomparisontimetrendrequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/NAVComparisonTimeTrendRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "NAVComparisonTimeTrendRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 12,
+              "description": "종목코드"
+            },
+            "required": true,
+            "description": "종목코드",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "조회일자 (YYYYMMDD)"
+            },
+            "required": true,
+            "description": "조회일자 (YYYYMMDD)",
+            "name": "FID_INPUT_DATE_1",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "시작시간 (HHMMSS)"
+            },
+            "required": true,
+            "description": "시작시간 (HHMMSS)",
+            "name": "FID_INPUT_HOUR_1",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "종료시간 (HHMMSS)"
+            },
+            "required": true,
+            "description": "종료시간 (HHMMSS)",
+            "name": "FID_INPUT_HOUR_2",
+            "in": "query"
           }
         ],
         "responses": {
@@ -4384,15 +4307,30 @@
         ],
         "parameters": [
           {
-            "name": "stockcurrentpricerequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/StockCurrentPriceRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "StockCurrentPriceRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 12,
+              "description": "종목코드"
+            },
+            "required": true,
+            "description": "종목코드",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
           }
         ],
         "responses": {
@@ -4432,15 +4370,69 @@
         ],
         "parameters": [
           {
-            "name": "expectedclosingpricerequest",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
             "schema": {
-              "$ref": "#/components/schemas/ExpectedClosingPriceRequest"
+              "type": "string",
+              "enum": [
+                "J"
+              ],
+              "default": "J",
+              "description": "조건 시장 분류 코드"
             },
-            "description": "ExpectedClosingPriceRequest object parameter",
-            "required": true
+            "required": false,
+            "description": "조건 시장 분류 코드",
+            "name": "FID_COND_MRKT_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "default": "20171",
+              "description": "조건화면분류코드"
+            },
+            "required": false,
+            "description": "조건화면분류코드",
+            "name": "FID_COND_SCR_DIV_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "종목코드 (전체조회시 생략)"
+            },
+            "required": false,
+            "description": "종목코드 (전체조회시 생략)",
+            "name": "FID_INPUT_ISCD",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "0",
+                "1"
+              ],
+              "default": "0",
+              "description": "분류구분코드 (0:전체, 1:특정종목)"
+            },
+            "required": false,
+            "description": "분류구분코드 (0:전체, 1:특정종목)",
+            "name": "FID_DIV_CLS_CODE",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "0",
+                "1"
+              ],
+              "default": "0",
+              "description": "순위정렬구분코드 (0:상승률순, 1:하락률순)"
+            },
+            "required": false,
+            "description": "순위정렬구분코드 (0:상승률순, 1:하락률순)",
+            "name": "FID_RANK_SORT_CLS_CODE",
+            "in": "query"
           }
         ],
         "responses": {

@@ -22,11 +22,31 @@
 			
  * OpenAPI spec version: 1.0.0
  */
-import type { DailyChartRequest } from './DailyChartRequest';
+import type { GetUapiDomesticStockV1QuotationsInquireTimeDailychartpriceFidCondMrktDivCode } from './GetUapiDomesticStockV1QuotationsInquireTimeDailychartpriceFidCondMrktDivCode';
+import type { GetUapiDomesticStockV1QuotationsInquireTimeDailychartpriceFidPeriodDivCode } from './GetUapiDomesticStockV1QuotationsInquireTimeDailychartpriceFidPeriodDivCode';
+import type { GetUapiDomesticStockV1QuotationsInquireTimeDailychartpriceFidOrgAdjPrc } from './GetUapiDomesticStockV1QuotationsInquireTimeDailychartpriceFidOrgAdjPrc';
 
 export type GetUapiDomesticStockV1QuotationsInquireTimeDailychartpriceParams = {
 /**
- * DailyChartRequest object parameter
+ * 조건 시장 분류 코드
  */
-dailychartrequest: DailyChartRequest;
+FID_COND_MRKT_DIV_CODE?: GetUapiDomesticStockV1QuotationsInquireTimeDailychartpriceFidCondMrktDivCode;
+/**
+ * 종목코드 (6자리)
+ * @minLength 6
+ * @maxLength 6
+ */
+FID_INPUT_ISCD: string;
+/**
+ * 시작일자 (YYYYMMDD)
+ */
+FID_INPUT_DATE_1: string;
+/**
+ * 분 간격 (1,5,10,15,30,60)
+ */
+FID_PERIOD_DIV_CODE: GetUapiDomesticStockV1QuotationsInquireTimeDailychartpriceFidPeriodDivCode;
+/**
+ * 수정주가 여부 (0:수정안함, 1:수정함)
+ */
+FID_ORG_ADJ_PRC?: GetUapiDomesticStockV1QuotationsInquireTimeDailychartpriceFidOrgAdjPrc;
 };

@@ -22,11 +22,25 @@
 			
  * OpenAPI spec version: 1.0.0
  */
-import type { TimeTransactionRequest } from './TimeTransactionRequest';
+import type { GetUapiDomesticStockV1QuotationsInquireTimeItemconclusionFidCondMrktDivCode } from './GetUapiDomesticStockV1QuotationsInquireTimeItemconclusionFidCondMrktDivCode';
 
 export type GetUapiDomesticStockV1QuotationsInquireTimeItemconclusionParams = {
 /**
- * TimeTransactionRequest object parameter
+ * 조건 시장 분류 코드
  */
-timetransactionrequest: TimeTransactionRequest;
+FID_COND_MRKT_DIV_CODE?: GetUapiDomesticStockV1QuotationsInquireTimeItemconclusionFidCondMrktDivCode;
+/**
+ * 종목코드 (6자리)
+ * @minLength 6
+ * @maxLength 6
+ */
+FID_INPUT_ISCD: string;
+/**
+ * 시작시간 (HHMMSS)
+ */
+FID_INPUT_HOUR_1: string;
+/**
+ * 종료시간 (HHMMSS)
+ */
+FID_INPUT_HOUR_2: string;
 };

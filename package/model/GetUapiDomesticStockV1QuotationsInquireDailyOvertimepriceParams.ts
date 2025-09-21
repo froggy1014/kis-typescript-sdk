@@ -22,11 +22,17 @@
 			
  * OpenAPI spec version: 1.0.0
  */
-import type { StockCurrentPriceRequest } from './StockCurrentPriceRequest';
+import type { GetUapiDomesticStockV1QuotationsInquireDailyOvertimepriceFidCondMrktDivCode } from './GetUapiDomesticStockV1QuotationsInquireDailyOvertimepriceFidCondMrktDivCode';
 
 export type GetUapiDomesticStockV1QuotationsInquireDailyOvertimepriceParams = {
 /**
- * StockCurrentPriceRequest object parameter
+ * 조건 시장 분류 코드
  */
-stockcurrentpricerequest: StockCurrentPriceRequest;
+FID_COND_MRKT_DIV_CODE?: GetUapiDomesticStockV1QuotationsInquireDailyOvertimepriceFidCondMrktDivCode;
+/**
+ * 종목코드
+ * @minLength 6
+ * @maxLength 12
+ */
+FID_INPUT_ISCD: string;
 };

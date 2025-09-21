@@ -22,11 +22,26 @@
 			
  * OpenAPI spec version: 1.0.0
  */
-import type { IntradayChartRequest } from './IntradayChartRequest';
+import type { GetUapiDomesticStockV1QuotationsInquireTimeItemchartpriceFidCondMrktDivCode } from './GetUapiDomesticStockV1QuotationsInquireTimeItemchartpriceFidCondMrktDivCode';
+import type { GetUapiDomesticStockV1QuotationsInquireTimeItemchartpriceFidPwDataIncuYn } from './GetUapiDomesticStockV1QuotationsInquireTimeItemchartpriceFidPwDataIncuYn';
 
 export type GetUapiDomesticStockV1QuotationsInquireTimeItemchartpriceParams = {
 /**
- * IntradayChartRequest object parameter
+ * 조건 시장 분류 코드
  */
-intradaychartrequest: IntradayChartRequest;
+FID_COND_MRKT_DIV_CODE?: GetUapiDomesticStockV1QuotationsInquireTimeItemchartpriceFidCondMrktDivCode;
+/**
+ * 종목코드 (6자리)
+ * @minLength 6
+ * @maxLength 6
+ */
+FID_INPUT_ISCD: string;
+/**
+ * 시작시간 (HHMMSS)
+ */
+FID_INPUT_HOUR_1: string;
+/**
+ * 과거 데이터 포함 여부
+ */
+FID_PW_DATA_INCU_YN?: GetUapiDomesticStockV1QuotationsInquireTimeItemchartpriceFidPwDataIncuYn;
 };

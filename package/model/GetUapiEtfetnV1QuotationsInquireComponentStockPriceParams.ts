@@ -22,11 +22,21 @@
 			
  * OpenAPI spec version: 1.0.0
  */
-import type { ETFComponentStockRequest } from './ETFComponentStockRequest';
+import type { GetUapiEtfetnV1QuotationsInquireComponentStockPriceFidCondMrktDivCode } from './GetUapiEtfetnV1QuotationsInquireComponentStockPriceFidCondMrktDivCode';
 
 export type GetUapiEtfetnV1QuotationsInquireComponentStockPriceParams = {
 /**
- * ETFComponentStockRequest object parameter
+ * 조건 시장 분류 코드
  */
-etfcomponentstockrequest: ETFComponentStockRequest;
+FID_COND_MRKT_DIV_CODE?: GetUapiEtfetnV1QuotationsInquireComponentStockPriceFidCondMrktDivCode;
+/**
+ * 종목코드
+ * @minLength 6
+ * @maxLength 12
+ */
+FID_INPUT_ISCD: string;
+/**
+ * 조건화면분류코드
+ */
+FID_COND_SCR_DIV_CODE?: string;
 };

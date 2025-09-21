@@ -22,11 +22,25 @@
 			
  * OpenAPI spec version: 1.0.0
  */
-import type { NAVComparisonTrendRequest } from './NAVComparisonTrendRequest';
+import type { GetUapiEtfetnV1QuotationsNavComparisonDailyTrendFidCondMrktDivCode } from './GetUapiEtfetnV1QuotationsNavComparisonDailyTrendFidCondMrktDivCode';
 
 export type GetUapiEtfetnV1QuotationsNavComparisonDailyTrendParams = {
 /**
- * NAVComparisonTrendRequest object parameter
+ * 조건 시장 분류 코드
  */
-navcomparisontrendrequest: NAVComparisonTrendRequest;
+FID_COND_MRKT_DIV_CODE?: GetUapiEtfetnV1QuotationsNavComparisonDailyTrendFidCondMrktDivCode;
+/**
+ * 종목코드
+ * @minLength 6
+ * @maxLength 12
+ */
+FID_INPUT_ISCD: string;
+/**
+ * 시작일자 (YYYYMMDD)
+ */
+FID_INPUT_DATE_1: string;
+/**
+ * 종료일자 (YYYYMMDD)
+ */
+FID_INPUT_DATE_2: string;
 };

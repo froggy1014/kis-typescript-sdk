@@ -22,11 +22,35 @@
 			
  * OpenAPI spec version: 1.0.0
  */
-import type { PeriodChartRequest } from './PeriodChartRequest';
+import type { GetUapiDomesticStockV1QuotationsInquireDailyItemchartpriceFidCondMrktDivCode } from './GetUapiDomesticStockV1QuotationsInquireDailyItemchartpriceFidCondMrktDivCode';
+import type { GetUapiDomesticStockV1QuotationsInquireDailyItemchartpriceFidPeriodDivCode } from './GetUapiDomesticStockV1QuotationsInquireDailyItemchartpriceFidPeriodDivCode';
+import type { GetUapiDomesticStockV1QuotationsInquireDailyItemchartpriceFidOrgAdjPrc } from './GetUapiDomesticStockV1QuotationsInquireDailyItemchartpriceFidOrgAdjPrc';
 
 export type GetUapiDomesticStockV1QuotationsInquireDailyItemchartpriceParams = {
 /**
- * PeriodChartRequest object parameter
+ * 조건 시장 분류 코드
  */
-periodchartrequest: PeriodChartRequest;
+FID_COND_MRKT_DIV_CODE?: GetUapiDomesticStockV1QuotationsInquireDailyItemchartpriceFidCondMrktDivCode;
+/**
+ * 종목코드 (6자리)
+ * @minLength 6
+ * @maxLength 6
+ */
+FID_INPUT_ISCD: string;
+/**
+ * 시작일자 (YYYYMMDD)
+ */
+FID_INPUT_DATE_1: string;
+/**
+ * 종료일자 (YYYYMMDD)
+ */
+FID_INPUT_DATE_2: string;
+/**
+ * 기간분류코드 (D:일봉, W:주봉, M:월봉, Y:년봉)
+ */
+FID_PERIOD_DIV_CODE: GetUapiDomesticStockV1QuotationsInquireDailyItemchartpriceFidPeriodDivCode;
+/**
+ * 수정죽가 여부 (0:수정안함, 1:수정함)
+ */
+FID_ORG_ADJ_PRC?: GetUapiDomesticStockV1QuotationsInquireDailyItemchartpriceFidOrgAdjPrc;
 };

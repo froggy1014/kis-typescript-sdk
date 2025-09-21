@@ -323,7 +323,7 @@ export const getUapiEtfetnV1QuotationsInquirePrice = (
  * @summary 국내주식 장마감 예상체결가
  */
 export const getUapiDomesticStockV1QuotationsExpClosingPrice = (
-    params: GetUapiDomesticStockV1QuotationsExpClosingPriceParams,
+    params?: GetUapiDomesticStockV1QuotationsExpClosingPriceParams,
  ) => {
       return kisInstance<ExpectedClosingPriceResponse>(
       {url: `/uapi/domestic-stock/v1/quotations/exp-closing-price`, method: 'GET',

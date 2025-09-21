@@ -22,17 +22,12 @@
 			
  * OpenAPI spec version: 1.0.0
  */
-import type { GetUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceFidCondMrktDivCode } from './GetUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceFidCondMrktDivCode';
 
-export type GetUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceParams = {
-/**
- * 조건 시장 분류 코드
- */
-FID_COND_MRKT_DIV_CODE?: GetUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceFidCondMrktDivCode;
-/**
- * 종목코드 (6자리)
- * @minLength 6
- * @maxLength 6
- */
-FID_INPUT_ISCD: string;
-};
+export type GetUapiDomesticStockV1QuotationsExpClosingPriceFidDivClsCode = typeof GetUapiDomesticStockV1QuotationsExpClosingPriceFidDivClsCode[keyof typeof GetUapiDomesticStockV1QuotationsExpClosingPriceFidDivClsCode];
+
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const GetUapiDomesticStockV1QuotationsExpClosingPriceFidDivClsCode = {
+  NUMBER_0: '0',
+  NUMBER_1: '1',
+} as const;

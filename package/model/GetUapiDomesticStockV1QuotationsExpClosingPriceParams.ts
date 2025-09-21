@@ -22,11 +22,29 @@
 			
  * OpenAPI spec version: 1.0.0
  */
-import type { ExpectedClosingPriceRequest } from './ExpectedClosingPriceRequest';
+import type { GetUapiDomesticStockV1QuotationsExpClosingPriceFidCondMrktDivCode } from './GetUapiDomesticStockV1QuotationsExpClosingPriceFidCondMrktDivCode';
+import type { GetUapiDomesticStockV1QuotationsExpClosingPriceFidDivClsCode } from './GetUapiDomesticStockV1QuotationsExpClosingPriceFidDivClsCode';
+import type { GetUapiDomesticStockV1QuotationsExpClosingPriceFidRankSortClsCode } from './GetUapiDomesticStockV1QuotationsExpClosingPriceFidRankSortClsCode';
 
 export type GetUapiDomesticStockV1QuotationsExpClosingPriceParams = {
 /**
- * ExpectedClosingPriceRequest object parameter
+ * 조건 시장 분류 코드
  */
-expectedclosingpricerequest: ExpectedClosingPriceRequest;
+FID_COND_MRKT_DIV_CODE?: GetUapiDomesticStockV1QuotationsExpClosingPriceFidCondMrktDivCode;
+/**
+ * 조건화면분류코드
+ */
+FID_COND_SCR_DIV_CODE?: string;
+/**
+ * 종목코드 (전체조회시 생략)
+ */
+FID_INPUT_ISCD?: string;
+/**
+ * 분류구분코드 (0:전체, 1:특정종목)
+ */
+FID_DIV_CLS_CODE?: GetUapiDomesticStockV1QuotationsExpClosingPriceFidDivClsCode;
+/**
+ * 순위정렬구분코드 (0:상승률순, 1:하락률순)
+ */
+FID_RANK_SORT_CLS_CODE?: GetUapiDomesticStockV1QuotationsExpClosingPriceFidRankSortClsCode;
 };

@@ -33,16 +33,14 @@ import {
 **TR_ID:** FHKST01010100 (실전/모의 동일)
  * @summary 주식현재가 시세
  */
-export const getUapiDomesticStockV1QuotationsInquirePriceQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquirePriceQueryStockcurrentpricerequestFIDINPUTISCDMin = 6;
+export const getUapiDomesticStockV1QuotationsInquirePriceQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquirePriceQueryFIDINPUTISCDMin = 6;
 
-export const getUapiDomesticStockV1QuotationsInquirePriceQueryStockcurrentpricerequestFIDINPUTISCDMax = 6;
+export const getUapiDomesticStockV1QuotationsInquirePriceQueryFIDINPUTISCDMax = 6;
 
 
 export const getUapiDomesticStockV1QuotationsInquirePriceQueryParams = zod.object({
-  "stockcurrentpricerequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquirePriceQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드 (J: 주식)'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquirePriceQueryStockcurrentpricerequestFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquirePriceQueryStockcurrentpricerequestFIDINPUTISCDMax).describe('종목코드 (6자리, 예: 005930)')
-}).describe('StockCurrentPriceRequest object parameter')
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquirePriceQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드 (J: 주식)'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquirePriceQueryFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquirePriceQueryFIDINPUTISCDMax).describe('종목코드 (6자리, 예: 005930)')
 })
 
 export const getUapiDomesticStockV1QuotationsInquirePriceResponse = zod.object({
@@ -74,16 +72,14 @@ export const getUapiDomesticStockV1QuotationsInquirePriceResponse = zod.object({
  * 주식의 추가 시세 정보를 조회합니다 (TR_ID: FHPST01010000)
  * @summary 주식현재가 시세2
  */
-export const getUapiDomesticStockV1QuotationsInquirePrice2QueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquirePrice2QueryStockcurrentpricerequestFIDINPUTISCDMin = 6;
+export const getUapiDomesticStockV1QuotationsInquirePrice2QueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquirePrice2QueryFIDINPUTISCDMin = 6;
 
-export const getUapiDomesticStockV1QuotationsInquirePrice2QueryStockcurrentpricerequestFIDINPUTISCDMax = 6;
+export const getUapiDomesticStockV1QuotationsInquirePrice2QueryFIDINPUTISCDMax = 6;
 
 
 export const getUapiDomesticStockV1QuotationsInquirePrice2QueryParams = zod.object({
-  "stockcurrentpricerequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquirePrice2QueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드 (J: 주식)'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquirePrice2QueryStockcurrentpricerequestFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquirePrice2QueryStockcurrentpricerequestFIDINPUTISCDMax).describe('종목코드 (6자리, 예: 005930)')
-}).describe('StockCurrentPriceRequest object parameter')
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquirePrice2QueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquirePrice2QueryFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquirePrice2QueryFIDINPUTISCDMax).describe('종목코드 (6자리)')
 })
 
 export const getUapiDomesticStockV1QuotationsInquirePrice2Response = zod.object({
@@ -166,16 +162,14 @@ export const getUapiDomesticStockV1QuotationsInquirePrice2Response = zod.object(
  * 주식의 체결 내역 정보를 조회합니다 (TR_ID: FHKST01010300)
  * @summary 주식현재가 체결
  */
-export const getUapiDomesticStockV1QuotationsInquireCcnlQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireCcnlQueryStockcurrentpricerequestFIDINPUTISCDMin = 6;
+export const getUapiDomesticStockV1QuotationsInquireCcnlQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireCcnlQueryFIDINPUTISCDMin = 6;
 
-export const getUapiDomesticStockV1QuotationsInquireCcnlQueryStockcurrentpricerequestFIDINPUTISCDMax = 6;
+export const getUapiDomesticStockV1QuotationsInquireCcnlQueryFIDINPUTISCDMax = 6;
 
 
 export const getUapiDomesticStockV1QuotationsInquireCcnlQueryParams = zod.object({
-  "stockcurrentpricerequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireCcnlQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드 (J: 주식)'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireCcnlQueryStockcurrentpricerequestFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireCcnlQueryStockcurrentpricerequestFIDINPUTISCDMax).describe('종목코드 (6자리, 예: 005930)')
-}).describe('StockCurrentPriceRequest object parameter')
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireCcnlQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireCcnlQueryFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireCcnlQueryFIDINPUTISCDMax).describe('종목코드 (6자리)')
 })
 
 export const getUapiDomesticStockV1QuotationsInquireCcnlResponse = zod.object({
@@ -197,18 +191,16 @@ export const getUapiDomesticStockV1QuotationsInquireCcnlResponse = zod.object({
  * 주식의 일자별 시세 정보를 조회합니다 (TR_ID: FHKST01010400)
  * @summary 주식현재가 일자별
  */
-export const getUapiDomesticStockV1QuotationsInquireDailyPriceQueryDailypricerequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireDailyPriceQueryDailypricerequestFIDINPUTISCDMin = 6;
+export const getUapiDomesticStockV1QuotationsInquireDailyPriceQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireDailyPriceQueryFIDINPUTISCDMin = 6;
 
-export const getUapiDomesticStockV1QuotationsInquireDailyPriceQueryDailypricerequestFIDINPUTISCDMax = 6;
-export const getUapiDomesticStockV1QuotationsInquireDailyPriceQueryDailypricerequestFIDPERIODDIVCODEDefault = "D";export const getUapiDomesticStockV1QuotationsInquireDailyPriceQueryDailypricerequestFIDORGADJPRCDefault = "0";
+export const getUapiDomesticStockV1QuotationsInquireDailyPriceQueryFIDINPUTISCDMax = 6;
+export const getUapiDomesticStockV1QuotationsInquireDailyPriceQueryFIDPERIODDIVCODEDefault = "D";export const getUapiDomesticStockV1QuotationsInquireDailyPriceQueryFIDORGADJPRCDefault = "0";
 
 export const getUapiDomesticStockV1QuotationsInquireDailyPriceQueryParams = zod.object({
-  "dailypricerequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireDailyPriceQueryDailypricerequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireDailyPriceQueryDailypricerequestFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireDailyPriceQueryDailypricerequestFIDINPUTISCDMax).describe('종목코드 (6자리)'),
-  "FID_PERIOD_DIV_CODE": zod.enum(['D', 'W', 'M']).default(getUapiDomesticStockV1QuotationsInquireDailyPriceQueryDailypricerequestFIDPERIODDIVCODEDefault).describe('기간분류코드 (D:일봉, W:주봉, M:월봉)'),
-  "FID_ORG_ADJ_PRC": zod.enum(['0', '1']).default(getUapiDomesticStockV1QuotationsInquireDailyPriceQueryDailypricerequestFIDORGADJPRCDefault).describe('수정주가 여부 (0:수정안함, 1:수정함)')
-}).describe('DailyPriceRequest object parameter')
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireDailyPriceQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireDailyPriceQueryFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireDailyPriceQueryFIDINPUTISCDMax).describe('종목코드 (6자리)'),
+  "FID_PERIOD_DIV_CODE": zod.enum(['D', 'W', 'M']).default(getUapiDomesticStockV1QuotationsInquireDailyPriceQueryFIDPERIODDIVCODEDefault).describe('기간분류코드 (D:일봉, W:주봉, M:월봉)'),
+  "FID_ORG_ADJ_PRC": zod.enum(['0', '1']).default(getUapiDomesticStockV1QuotationsInquireDailyPriceQueryFIDORGADJPRCDefault).describe('수정주가 여부 (0:수정안함, 1:수정함)')
 })
 
 export const getUapiDomesticStockV1QuotationsInquireDailyPriceResponse = zod.object({
@@ -236,16 +228,14 @@ export const getUapiDomesticStockV1QuotationsInquireDailyPriceResponse = zod.obj
  * 주식의 호가 정보와 예상체결 정보를 조회합니다 (TR_ID: FHKST01010200)
  * @summary 주식현재가 호가/예상체결
  */
-export const getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnQueryStockcurrentpricerequestFIDINPUTISCDMin = 6;
+export const getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnQueryFIDINPUTISCDMin = 6;
 
-export const getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnQueryStockcurrentpricerequestFIDINPUTISCDMax = 6;
+export const getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnQueryFIDINPUTISCDMax = 6;
 
 
 export const getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnQueryParams = zod.object({
-  "stockcurrentpricerequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드 (J: 주식)'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnQueryStockcurrentpricerequestFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnQueryStockcurrentpricerequestFIDINPUTISCDMax).describe('종목코드 (6자리, 예: 005930)')
-}).describe('StockCurrentPriceRequest object parameter')
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnQueryFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnQueryFIDINPUTISCDMax).describe('종목코드 (6자리)')
 })
 
 export const getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnResponse = zod.object({
@@ -281,16 +271,14 @@ export const getUapiDomesticStockV1QuotationsInquireAskingPriceExpCcnResponse = 
  * 주식의 투자자별 매매 동향을 조회합니다 (TR_ID: FHKST01010900)
  * @summary 주식현재가 투자자
  */
-export const getUapiDomesticStockV1QuotationsInquireInvestorQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireInvestorQueryStockcurrentpricerequestFIDINPUTISCDMin = 6;
+export const getUapiDomesticStockV1QuotationsInquireInvestorQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireInvestorQueryFIDINPUTISCDMin = 6;
 
-export const getUapiDomesticStockV1QuotationsInquireInvestorQueryStockcurrentpricerequestFIDINPUTISCDMax = 6;
+export const getUapiDomesticStockV1QuotationsInquireInvestorQueryFIDINPUTISCDMax = 6;
 
 
 export const getUapiDomesticStockV1QuotationsInquireInvestorQueryParams = zod.object({
-  "stockcurrentpricerequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireInvestorQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드 (J: 주식)'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireInvestorQueryStockcurrentpricerequestFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireInvestorQueryStockcurrentpricerequestFIDINPUTISCDMax).describe('종목코드 (6자리, 예: 005930)')
-}).describe('StockCurrentPriceRequest object parameter')
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireInvestorQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireInvestorQueryFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireInvestorQueryFIDINPUTISCDMax).describe('종목코드 (6자리)')
 })
 
 export const getUapiDomesticStockV1QuotationsInquireInvestorResponse = zod.object({
@@ -316,16 +304,14 @@ export const getUapiDomesticStockV1QuotationsInquireInvestorResponse = zod.objec
  * 주식의 회원사별 매매 동향을 조회합니다 (TR_ID: FHKST01010600)
  * @summary 주식현재가 회원사
  */
-export const getUapiDomesticStockV1QuotationsInquireMemberQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireMemberQueryStockcurrentpricerequestFIDINPUTISCDMin = 6;
+export const getUapiDomesticStockV1QuotationsInquireMemberQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireMemberQueryFIDINPUTISCDMin = 6;
 
-export const getUapiDomesticStockV1QuotationsInquireMemberQueryStockcurrentpricerequestFIDINPUTISCDMax = 6;
+export const getUapiDomesticStockV1QuotationsInquireMemberQueryFIDINPUTISCDMax = 6;
 
 
 export const getUapiDomesticStockV1QuotationsInquireMemberQueryParams = zod.object({
-  "stockcurrentpricerequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireMemberQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드 (J: 주식)'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireMemberQueryStockcurrentpricerequestFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireMemberQueryStockcurrentpricerequestFIDINPUTISCDMax).describe('종목코드 (6자리, 예: 005930)')
-}).describe('StockCurrentPriceRequest object parameter')
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireMemberQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireMemberQueryFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireMemberQueryFIDINPUTISCDMax).describe('종목코드 (6자리)')
 })
 
 export const getUapiDomesticStockV1QuotationsInquireMemberResponse = zod.object({
@@ -347,20 +333,18 @@ export const getUapiDomesticStockV1QuotationsInquireMemberResponse = zod.object(
  * 주식의 기간별 차트 데이터를 조회합니다 (TR_ID: FHKST03010100)
  * @summary 국내주식기간별시세(일/주/월/년)
  */
-export const getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryPeriodchartrequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryPeriodchartrequestFIDINPUTISCDMin = 6;
+export const getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryFIDINPUTISCDMin = 6;
 
-export const getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryPeriodchartrequestFIDINPUTISCDMax = 6;
-export const getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryPeriodchartrequestFIDORGADJPRCDefault = "0";
+export const getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryFIDINPUTISCDMax = 6;
+export const getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryFIDORGADJPRCDefault = "0";
 
 export const getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryParams = zod.object({
-  "periodchartrequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryPeriodchartrequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryPeriodchartrequestFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryPeriodchartrequestFIDINPUTISCDMax).describe('종목코드 (6자리)'),
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryFIDINPUTISCDMax).describe('종목코드 (6자리)'),
   "FID_INPUT_DATE_1": zod.string().describe('시작일자 (YYYYMMDD)'),
   "FID_INPUT_DATE_2": zod.string().describe('종료일자 (YYYYMMDD)'),
   "FID_PERIOD_DIV_CODE": zod.enum(['D', 'W', 'M', 'Y']).describe('기간분류코드 (D:일봉, W:주봉, M:월봉, Y:년봉)'),
-  "FID_ORG_ADJ_PRC": zod.enum(['0', '1']).default(getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryPeriodchartrequestFIDORGADJPRCDefault).describe('수정죽가 여부 (0:수정안함, 1:수정함)')
-}).describe('PeriodChartRequest object parameter')
+  "FID_ORG_ADJ_PRC": zod.enum(['0', '1']).default(getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceQueryFIDORGADJPRCDefault).describe('수정죽가 여부 (0:수정안함, 1:수정함)')
 })
 
 export const getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceResponse = zod.object({
@@ -400,18 +384,16 @@ export const getUapiDomesticStockV1QuotationsInquireDailyItemchartpriceResponse 
  * 주식의 당일 분봉 차트 데이터를 조회합니다 (TR_ID: FHKST03010200)
  * @summary 주식당일분봉조회
  */
-export const getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryIntradaychartrequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryIntradaychartrequestFIDINPUTISCDMin = 6;
+export const getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryFIDINPUTISCDMin = 6;
 
-export const getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryIntradaychartrequestFIDINPUTISCDMax = 6;
-export const getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryIntradaychartrequestFIDPWDATAINCUYNDefault = "Y";
+export const getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryFIDINPUTISCDMax = 6;
+export const getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryFIDPWDATAINCUYNDefault = "Y";
 
 export const getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryParams = zod.object({
-  "intradaychartrequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryIntradaychartrequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryIntradaychartrequestFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryIntradaychartrequestFIDINPUTISCDMax).describe('종목코드 (6자리)'),
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryFIDINPUTISCDMax).describe('종목코드 (6자리)'),
   "FID_INPUT_HOUR_1": zod.string().describe('시작시간 (HHMMSS)'),
-  "FID_PW_DATA_INCU_YN": zod.enum(['Y', 'N']).default(getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryIntradaychartrequestFIDPWDATAINCUYNDefault).describe('과거 데이터 포함 여부')
-}).describe('IntradayChartRequest object parameter')
+  "FID_PW_DATA_INCU_YN": zod.enum(['Y', 'N']).default(getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceQueryFIDPWDATAINCUYNDefault).describe('과거 데이터 포함 여부')
 })
 
 export const getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceResponse = zod.object({
@@ -445,18 +427,16 @@ export const getUapiDomesticStockV1QuotationsInquireTimeItemchartpriceResponse =
  * 주식의 시간대별 체결 내역을 조회합니다 (TR_ID: FHPST01060000)
  * @summary 주식현재가 당일시간대별체결
  */
-export const getUapiDomesticStockV1QuotationsInquireTimeItemconclusionQueryTimetransactionrequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireTimeItemconclusionQueryTimetransactionrequestFIDINPUTISCDMin = 6;
+export const getUapiDomesticStockV1QuotationsInquireTimeItemconclusionQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireTimeItemconclusionQueryFIDINPUTISCDMin = 6;
 
-export const getUapiDomesticStockV1QuotationsInquireTimeItemconclusionQueryTimetransactionrequestFIDINPUTISCDMax = 6;
+export const getUapiDomesticStockV1QuotationsInquireTimeItemconclusionQueryFIDINPUTISCDMax = 6;
 
 
 export const getUapiDomesticStockV1QuotationsInquireTimeItemconclusionQueryParams = zod.object({
-  "timetransactionrequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireTimeItemconclusionQueryTimetransactionrequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireTimeItemconclusionQueryTimetransactionrequestFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireTimeItemconclusionQueryTimetransactionrequestFIDINPUTISCDMax).describe('종목코드 (6자리)'),
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireTimeItemconclusionQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireTimeItemconclusionQueryFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireTimeItemconclusionQueryFIDINPUTISCDMax).describe('종목코드 (6자리)'),
   "FID_INPUT_HOUR_1": zod.string().describe('시작시간 (HHMMSS)'),
   "FID_INPUT_HOUR_2": zod.string().describe('종료시간 (HHMMSS)')
-}).describe('TimeTransactionRequest object parameter')
 })
 
 export const getUapiDomesticStockV1QuotationsInquireTimeItemconclusionResponse = zod.object({
@@ -478,16 +458,14 @@ export const getUapiDomesticStockV1QuotationsInquireTimeItemconclusionResponse =
  * 주식의 시간외 현재가 정보를 조회합니다 (TR_ID: FHPST02300000)
  * @summary 국내주식 시간외현재가
  */
-export const getUapiDomesticStockV1QuotationsInquireOvertimePriceQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireOvertimePriceQueryStockcurrentpricerequestFIDINPUTISCDMin = 6;
+export const getUapiDomesticStockV1QuotationsInquireOvertimePriceQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireOvertimePriceQueryFIDINPUTISCDMin = 6;
 
-export const getUapiDomesticStockV1QuotationsInquireOvertimePriceQueryStockcurrentpricerequestFIDINPUTISCDMax = 6;
+export const getUapiDomesticStockV1QuotationsInquireOvertimePriceQueryFIDINPUTISCDMax = 6;
 
 
 export const getUapiDomesticStockV1QuotationsInquireOvertimePriceQueryParams = zod.object({
-  "stockcurrentpricerequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireOvertimePriceQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드 (J: 주식)'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireOvertimePriceQueryStockcurrentpricerequestFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireOvertimePriceQueryStockcurrentpricerequestFIDINPUTISCDMax).describe('종목코드 (6자리, 예: 005930)')
-}).describe('StockCurrentPriceRequest object parameter')
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireOvertimePriceQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireOvertimePriceQueryFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireOvertimePriceQueryFIDINPUTISCDMax).describe('종목코드 (6자리)')
 })
 
 export const getUapiDomesticStockV1QuotationsInquireOvertimePriceResponse = zod.object({
@@ -583,17 +561,15 @@ export const getUapiDomesticStockV1QuotationsInquireOvertimePriceResponse = zod.
  * ETF의 구성종목 시세 정보를 조회합니다 (TR_ID: FHKST121600C0)
  * @summary ETF 구성종목시세
  */
-export const getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryEtfcomponentstockrequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryEtfcomponentstockrequestFIDINPUTISCDMin = 6;
+export const getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryFIDINPUTISCDMin = 6;
 
-export const getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryEtfcomponentstockrequestFIDINPUTISCDMax = 12;
-export const getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryEtfcomponentstockrequestFIDCONDSCRDIVCODEDefault = "11216";
+export const getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryFIDINPUTISCDMax = 12;
+export const getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryFIDCONDSCRDIVCODEDefault = "11216";
 
 export const getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryParams = zod.object({
-  "etfcomponentstockrequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryEtfcomponentstockrequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryEtfcomponentstockrequestFIDINPUTISCDMin).max(getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryEtfcomponentstockrequestFIDINPUTISCDMax).describe('종목코드'),
-  "FID_COND_SCR_DIV_CODE": zod.string().default(getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryEtfcomponentstockrequestFIDCONDSCRDIVCODEDefault).describe('조건화면분류코드')
-}).describe('ETFComponentStockRequest object parameter')
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryFIDINPUTISCDMin).max(getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryFIDINPUTISCDMax).describe('종목코드'),
+  "FID_COND_SCR_DIV_CODE": zod.string().default(getUapiEtfetnV1QuotationsInquireComponentStockPriceQueryFIDCONDSCRDIVCODEDefault).describe('조건화면분류코드')
 })
 
 export const getUapiEtfetnV1QuotationsInquireComponentStockPriceResponse = zod.object({
@@ -626,18 +602,16 @@ export const getUapiEtfetnV1QuotationsInquireComponentStockPriceResponse = zod.o
  * ETF/ETN의 NAV 비교추이를 종목별로 조회합니다 (TR_ID: FHPST02440000)
  * @summary NAV 비교추이(종목)
  */
-export const getUapiEtfetnV1QuotationsNavComparisonTrendQueryNavcomparisontrendrequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiEtfetnV1QuotationsNavComparisonTrendQueryNavcomparisontrendrequestFIDINPUTISCDMin = 6;
+export const getUapiEtfetnV1QuotationsNavComparisonTrendQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiEtfetnV1QuotationsNavComparisonTrendQueryFIDINPUTISCDMin = 6;
 
-export const getUapiEtfetnV1QuotationsNavComparisonTrendQueryNavcomparisontrendrequestFIDINPUTISCDMax = 12;
+export const getUapiEtfetnV1QuotationsNavComparisonTrendQueryFIDINPUTISCDMax = 12;
 
 
 export const getUapiEtfetnV1QuotationsNavComparisonTrendQueryParams = zod.object({
-  "navcomparisontrendrequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiEtfetnV1QuotationsNavComparisonTrendQueryNavcomparisontrendrequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiEtfetnV1QuotationsNavComparisonTrendQueryNavcomparisontrendrequestFIDINPUTISCDMin).max(getUapiEtfetnV1QuotationsNavComparisonTrendQueryNavcomparisontrendrequestFIDINPUTISCDMax).describe('종목코드'),
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiEtfetnV1QuotationsNavComparisonTrendQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiEtfetnV1QuotationsNavComparisonTrendQueryFIDINPUTISCDMin).max(getUapiEtfetnV1QuotationsNavComparisonTrendQueryFIDINPUTISCDMax).describe('종목코드'),
   "FID_INPUT_DATE_1": zod.string().describe('시작일자 (YYYYMMDD)'),
   "FID_INPUT_DATE_2": zod.string().describe('종료일자 (YYYYMMDD)')
-}).describe('NAVComparisonTrendRequest object parameter')
 })
 
 export const getUapiEtfetnV1QuotationsNavComparisonTrendResponse = zod.object({
@@ -662,16 +636,14 @@ export const getUapiEtfetnV1QuotationsNavComparisonTrendResponse = zod.object({
  * 주식의 시간외 일자별 주가 정보를 조회합니다 (TR_ID: FHPST02320000)
  * @summary 주식현재가 시간외일자별주가
  */
-export const getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceQueryStockcurrentpricerequestFIDINPUTISCDMin = 6;
+export const getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceQueryFIDINPUTISCDMin = 6;
 
-export const getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceQueryStockcurrentpricerequestFIDINPUTISCDMax = 6;
+export const getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceQueryFIDINPUTISCDMax = 12;
 
 
 export const getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceQueryParams = zod.object({
-  "stockcurrentpricerequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드 (J: 주식)'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceQueryStockcurrentpricerequestFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceQueryStockcurrentpricerequestFIDINPUTISCDMax).describe('종목코드 (6자리, 예: 005930)')
-}).describe('StockCurrentPriceRequest object parameter')
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceQueryFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceQueryFIDINPUTISCDMax).describe('종목코드')
 })
 
 export const getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceResponse = zod.object({
@@ -700,16 +672,14 @@ export const getUapiDomesticStockV1QuotationsInquireDailyOvertimepriceResponse =
  * 주식의 시간외 호가 정보를 조회합니다 (TR_ID: FHPST02300400)
  * @summary 국내주식 시간외호가
  */
-export const getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceQueryStockcurrentpricerequestFIDINPUTISCDMin = 6;
+export const getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceQueryFIDINPUTISCDMin = 6;
 
-export const getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceQueryStockcurrentpricerequestFIDINPUTISCDMax = 6;
+export const getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceQueryFIDINPUTISCDMax = 6;
 
 
 export const getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceQueryParams = zod.object({
-  "stockcurrentpricerequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드 (J: 주식)'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceQueryStockcurrentpricerequestFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceQueryStockcurrentpricerequestFIDINPUTISCDMax).describe('종목코드 (6자리, 예: 005930)')
-}).describe('StockCurrentPriceRequest object parameter')
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceQueryFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceQueryFIDINPUTISCDMax).describe('종목코드 (6자리)')
 })
 
 export const getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceResponse = zod.object({
@@ -746,19 +716,17 @@ export const getUapiDomesticStockV1QuotationsInquireOvertimeAskingPriceResponse 
  * 주식의 일별 분봉 차트 데이터를 조회합니다 (TR_ID: FHKST03010230)
  * @summary 주식일별분봉조회
  */
-export const getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryDailychartrequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryDailychartrequestFIDINPUTISCDMin = 6;
+export const getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryFIDINPUTISCDMin = 6;
 
-export const getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryDailychartrequestFIDINPUTISCDMax = 6;
-export const getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryDailychartrequestFIDORGADJPRCDefault = "0";
+export const getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryFIDINPUTISCDMax = 6;
+export const getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryFIDORGADJPRCDefault = "0";
 
 export const getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryParams = zod.object({
-  "dailychartrequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryDailychartrequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryDailychartrequestFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryDailychartrequestFIDINPUTISCDMax).describe('종목코드 (6자리)'),
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryFIDINPUTISCDMin).max(getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryFIDINPUTISCDMax).describe('종목코드 (6자리)'),
   "FID_INPUT_DATE_1": zod.string().describe('시작일자 (YYYYMMDD)'),
   "FID_PERIOD_DIV_CODE": zod.enum(['1', '5', '10', '15', '30', '60']).describe('분 간격 (1,5,10,15,30,60)'),
-  "FID_ORG_ADJ_PRC": zod.enum(['0', '1']).default(getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryDailychartrequestFIDORGADJPRCDefault).describe('수정주가 여부 (0:수정안함, 1:수정함)')
-}).describe('DailyChartRequest object parameter')
+  "FID_ORG_ADJ_PRC": zod.enum(['0', '1']).default(getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceQueryFIDORGADJPRCDefault).describe('수정주가 여부 (0:수정안함, 1:수정함)')
 })
 
 export const getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceResponse = zod.object({
@@ -792,18 +760,16 @@ export const getUapiDomesticStockV1QuotationsInquireTimeDailychartpriceResponse 
  * ETF/ETN의 NAV 비교추이를 일별로 조회합니다 (TR_ID: FHPST02440200)
  * @summary NAV 비교추이(일)
  */
-export const getUapiEtfetnV1QuotationsNavComparisonDailyTrendQueryNavcomparisontrendrequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiEtfetnV1QuotationsNavComparisonDailyTrendQueryNavcomparisontrendrequestFIDINPUTISCDMin = 6;
+export const getUapiEtfetnV1QuotationsNavComparisonDailyTrendQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiEtfetnV1QuotationsNavComparisonDailyTrendQueryFIDINPUTISCDMin = 6;
 
-export const getUapiEtfetnV1QuotationsNavComparisonDailyTrendQueryNavcomparisontrendrequestFIDINPUTISCDMax = 12;
+export const getUapiEtfetnV1QuotationsNavComparisonDailyTrendQueryFIDINPUTISCDMax = 12;
 
 
 export const getUapiEtfetnV1QuotationsNavComparisonDailyTrendQueryParams = zod.object({
-  "navcomparisontrendrequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiEtfetnV1QuotationsNavComparisonDailyTrendQueryNavcomparisontrendrequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiEtfetnV1QuotationsNavComparisonDailyTrendQueryNavcomparisontrendrequestFIDINPUTISCDMin).max(getUapiEtfetnV1QuotationsNavComparisonDailyTrendQueryNavcomparisontrendrequestFIDINPUTISCDMax).describe('종목코드'),
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiEtfetnV1QuotationsNavComparisonDailyTrendQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiEtfetnV1QuotationsNavComparisonDailyTrendQueryFIDINPUTISCDMin).max(getUapiEtfetnV1QuotationsNavComparisonDailyTrendQueryFIDINPUTISCDMax).describe('종목코드'),
   "FID_INPUT_DATE_1": zod.string().describe('시작일자 (YYYYMMDD)'),
   "FID_INPUT_DATE_2": zod.string().describe('종료일자 (YYYYMMDD)')
-}).describe('NAVComparisonTrendRequest object parameter')
 })
 
 export const getUapiEtfetnV1QuotationsNavComparisonDailyTrendResponse = zod.object({
@@ -827,19 +793,17 @@ export const getUapiEtfetnV1QuotationsNavComparisonDailyTrendResponse = zod.obje
  * ETF/ETN의 NAV 비교추이를 분별로 조회합니다 (TR_ID: FHPST02440100)
  * @summary NAV 비교추이(분)
  */
-export const getUapiEtfetnV1QuotationsNavComparisonTimeTrendQueryNavcomparisontimetrendrequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiEtfetnV1QuotationsNavComparisonTimeTrendQueryNavcomparisontimetrendrequestFIDINPUTISCDMin = 6;
+export const getUapiEtfetnV1QuotationsNavComparisonTimeTrendQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiEtfetnV1QuotationsNavComparisonTimeTrendQueryFIDINPUTISCDMin = 6;
 
-export const getUapiEtfetnV1QuotationsNavComparisonTimeTrendQueryNavcomparisontimetrendrequestFIDINPUTISCDMax = 12;
+export const getUapiEtfetnV1QuotationsNavComparisonTimeTrendQueryFIDINPUTISCDMax = 12;
 
 
 export const getUapiEtfetnV1QuotationsNavComparisonTimeTrendQueryParams = zod.object({
-  "navcomparisontimetrendrequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiEtfetnV1QuotationsNavComparisonTimeTrendQueryNavcomparisontimetrendrequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiEtfetnV1QuotationsNavComparisonTimeTrendQueryNavcomparisontimetrendrequestFIDINPUTISCDMin).max(getUapiEtfetnV1QuotationsNavComparisonTimeTrendQueryNavcomparisontimetrendrequestFIDINPUTISCDMax).describe('종목코드'),
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiEtfetnV1QuotationsNavComparisonTimeTrendQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiEtfetnV1QuotationsNavComparisonTimeTrendQueryFIDINPUTISCDMin).max(getUapiEtfetnV1QuotationsNavComparisonTimeTrendQueryFIDINPUTISCDMax).describe('종목코드'),
   "FID_INPUT_DATE_1": zod.string().describe('조회일자 (YYYYMMDD)'),
   "FID_INPUT_HOUR_1": zod.string().describe('시작시간 (HHMMSS)'),
   "FID_INPUT_HOUR_2": zod.string().describe('종료시간 (HHMMSS)')
-}).describe('NAVComparisonTimeTrendRequest object parameter')
 })
 
 export const getUapiEtfetnV1QuotationsNavComparisonTimeTrendResponse = zod.object({
@@ -863,16 +827,14 @@ export const getUapiEtfetnV1QuotationsNavComparisonTimeTrendResponse = zod.objec
  * ETF/ETN의 현재가 정보를 조회합니다 (TR_ID: FHPST02400000)
  * @summary ETF/ETN 현재가
  */
-export const getUapiEtfetnV1QuotationsInquirePriceQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiEtfetnV1QuotationsInquirePriceQueryStockcurrentpricerequestFIDINPUTISCDMin = 6;
+export const getUapiEtfetnV1QuotationsInquirePriceQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiEtfetnV1QuotationsInquirePriceQueryFIDINPUTISCDMin = 6;
 
-export const getUapiEtfetnV1QuotationsInquirePriceQueryStockcurrentpricerequestFIDINPUTISCDMax = 6;
+export const getUapiEtfetnV1QuotationsInquirePriceQueryFIDINPUTISCDMax = 12;
 
 
 export const getUapiEtfetnV1QuotationsInquirePriceQueryParams = zod.object({
-  "stockcurrentpricerequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiEtfetnV1QuotationsInquirePriceQueryStockcurrentpricerequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드 (J: 주식)'),
-  "FID_INPUT_ISCD": zod.string().min(getUapiEtfetnV1QuotationsInquirePriceQueryStockcurrentpricerequestFIDINPUTISCDMin).max(getUapiEtfetnV1QuotationsInquirePriceQueryStockcurrentpricerequestFIDINPUTISCDMax).describe('종목코드 (6자리, 예: 005930)')
-}).describe('StockCurrentPriceRequest object parameter')
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiEtfetnV1QuotationsInquirePriceQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_INPUT_ISCD": zod.string().min(getUapiEtfetnV1QuotationsInquirePriceQueryFIDINPUTISCDMin).max(getUapiEtfetnV1QuotationsInquirePriceQueryFIDINPUTISCDMax).describe('종목코드')
 })
 
 export const getUapiEtfetnV1QuotationsInquirePriceResponse = zod.object({
@@ -908,16 +870,14 @@ export const getUapiEtfetnV1QuotationsInquirePriceResponse = zod.object({
  * 국내주식의 장마감 예상체결가를 조회합니다 (TR_ID: FHKST117300C0)
  * @summary 국내주식 장마감 예상체결가
  */
-export const getUapiDomesticStockV1QuotationsExpClosingPriceQueryExpectedclosingpricerequestFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsExpClosingPriceQueryExpectedclosingpricerequestFIDCONDSCRDIVCODEDefault = "20171";export const getUapiDomesticStockV1QuotationsExpClosingPriceQueryExpectedclosingpricerequestFIDDIVCLSCODEDefault = "0";export const getUapiDomesticStockV1QuotationsExpClosingPriceQueryExpectedclosingpricerequestFIDRANKSORTCLSCODEDefault = "0";
+export const getUapiDomesticStockV1QuotationsExpClosingPriceQueryFIDCONDMRKTDIVCODEDefault = "J";export const getUapiDomesticStockV1QuotationsExpClosingPriceQueryFIDCONDSCRDIVCODEDefault = "20171";export const getUapiDomesticStockV1QuotationsExpClosingPriceQueryFIDDIVCLSCODEDefault = "0";export const getUapiDomesticStockV1QuotationsExpClosingPriceQueryFIDRANKSORTCLSCODEDefault = "0";
 
 export const getUapiDomesticStockV1QuotationsExpClosingPriceQueryParams = zod.object({
-  "expectedclosingpricerequest": zod.object({
-  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsExpClosingPriceQueryExpectedclosingpricerequestFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
-  "FID_COND_SCR_DIV_CODE": zod.string().default(getUapiDomesticStockV1QuotationsExpClosingPriceQueryExpectedclosingpricerequestFIDCONDSCRDIVCODEDefault).describe('조건화면분류코드'),
+  "FID_COND_MRKT_DIV_CODE": zod.enum(['J']).default(getUapiDomesticStockV1QuotationsExpClosingPriceQueryFIDCONDMRKTDIVCODEDefault).describe('조건 시장 분류 코드'),
+  "FID_COND_SCR_DIV_CODE": zod.string().default(getUapiDomesticStockV1QuotationsExpClosingPriceQueryFIDCONDSCRDIVCODEDefault).describe('조건화면분류코드'),
   "FID_INPUT_ISCD": zod.string().optional().describe('종목코드 (전체조회시 생략)'),
-  "FID_DIV_CLS_CODE": zod.enum(['0', '1']).default(getUapiDomesticStockV1QuotationsExpClosingPriceQueryExpectedclosingpricerequestFIDDIVCLSCODEDefault).describe('분류구분코드 (0:전체, 1:특정종목)'),
-  "FID_RANK_SORT_CLS_CODE": zod.enum(['0', '1']).default(getUapiDomesticStockV1QuotationsExpClosingPriceQueryExpectedclosingpricerequestFIDRANKSORTCLSCODEDefault).describe('순위정렬구분코드 (0:상승률순, 1:하락률순)')
-}).describe('ExpectedClosingPriceRequest object parameter')
+  "FID_DIV_CLS_CODE": zod.enum(['0', '1']).default(getUapiDomesticStockV1QuotationsExpClosingPriceQueryFIDDIVCLSCODEDefault).describe('분류구분코드 (0:전체, 1:특정종목)'),
+  "FID_RANK_SORT_CLS_CODE": zod.enum(['0', '1']).default(getUapiDomesticStockV1QuotationsExpClosingPriceQueryFIDRANKSORTCLSCODEDefault).describe('순위정렬구분코드 (0:상승률순, 1:하락률순)')
 })
 
 export const getUapiDomesticStockV1QuotationsExpClosingPriceResponse = zod.object({
